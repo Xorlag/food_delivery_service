@@ -1,4 +1,5 @@
-﻿using FoodDeliveryService.APIGateway.QueueClients.Factory;
+﻿using FoodDeliveryService.APIGateway.Commands;
+using FoodDeliveryService.APIGateway.QueueClients;
 
 namespace FoodDeliveryService.APIGateway.Services
 {
@@ -13,9 +14,14 @@ namespace FoodDeliveryService.APIGateway.Services
             _configuration = configuration;
         }
 
-        public async void CreateOrder()
+        public async Task CreateOrder(CreateOrderCommand command)
         {
-
+            var messageBrokerClient = _messageBrockerClientFactory.CreateClient(new MessageBrokerClientOptions()
+            {
+                HostUrl = _configuration.OrderServiceMessageBrokerUrl,
+                QueueName = _configuration.OrderServiceQueueName
+            });
+            await messageBrokerClient.SendMessage(command);
         }
     }
 }

@@ -10,8 +10,9 @@ namespace FoodDeliveryService.APIGateway.Controllers
     public class OrdersController : ControllerBase
     {
         [HttpPost]
-        public IActionResult CreateOrder([FromServices]OrderServiceClient orderServiceClient)
+        public async Task<IActionResult> CreateOrder([FromServices]OrderServiceClient orderServiceClient)
         {
+            await orderServiceClient.CreateOrder(new Commands.CreateOrderCommand());
             return Ok();
         }
     }

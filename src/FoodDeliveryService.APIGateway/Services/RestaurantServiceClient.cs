@@ -1,5 +1,5 @@
 ﻿using FoodDeliveryService.APIGateway.Commands;
-using FoodDeliveryService.APIGateway.QueueClients.Factory;
+using FoodDeliveryService.APIGateway.QueueClients;
 
 namespace FoodDeliveryService.APIGateway.Services
 {
@@ -10,12 +10,6 @@ namespace FoodDeliveryService.APIGateway.Services
         public RestaurantServiceClient(IMessageBrokerClientFactory messageBrockerClientFactory)
         {
             _messageBrockerClientFactory = messageBrockerClientFactory;
-        }
-
-        public async Task CreateOrder(CreateOrderCommand command)
-        {
-            var messageBrokerClient = _messageBrockerClientFactory.CreateClient(TargetServices.OrderService);
-            await messageBrokerClient.SendMessage(command);
         }
     }
 }
