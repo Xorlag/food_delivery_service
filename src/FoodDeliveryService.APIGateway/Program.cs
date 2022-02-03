@@ -1,3 +1,7 @@
+using FoodDeliveryService.APIGateway.Configuration;
+using FoodDeliveryService.APIGateway.QueueClients.Factory;
+using FoodDeliveryService.APIGateway.Services;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +24,13 @@ builder.Services.AddVersionedApiExplorer(options =>
     options.SubstituteApiVersionInUrl = true;
 });
 
+builder.Services.AddMassTransit(configurator =>
+{
+    configurator.AddBus(provider => Bus.Factory.CreateUsingRabbitMq());
+});
+
 ConfigureDependencyInjection(builder.Services);
+SetupApiGatewayConfiguration(builder.Configuration, builder.Services);
 
 var app = builder.Build();
 
@@ -39,7 +49,14 @@ app.MapControllers();
 
 app.Run();
 
+static void SetupApiGatewayConfiguration(IConfiguration configuration, IServiceCollection services)
+{
+    var configurationInstance = new ApiGatewayConfiguration(configuration);
+    services.AddSingleton<IOrderServiceConfiguration>(configurationInstance);
+}
+
 static void ConfigureDependencyInjection(IServiceCollection services)
 {
-    //services.AddSingleton<>
+    services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();
+    services.AddSingleton<OrderServiceClient>();
 }

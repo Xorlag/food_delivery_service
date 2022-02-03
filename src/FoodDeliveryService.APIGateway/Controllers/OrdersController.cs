@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FoodDeliveryService.APIGateway.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodDeliveryService.APIGateway.Controllers
@@ -9,7 +10,7 @@ namespace FoodDeliveryService.APIGateway.Controllers
     public class OrdersController : ControllerBase
     {
         [HttpPost]
-        public IActionResult CreateOrder()
+        public IActionResult CreateOrder([FromServices]OrderServiceClient orderServiceClient)
         {
             return Ok();
         }
