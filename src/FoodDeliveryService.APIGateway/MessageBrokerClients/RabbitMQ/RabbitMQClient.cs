@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace FoodDeliveryService.APIGateway.QueueClients
+namespace FoodDeliveryService.APIGateway.MessageBrokerClients.RabbitMQ
 {
     public class RabbitMQClient : IMessageBrokerClient
     {

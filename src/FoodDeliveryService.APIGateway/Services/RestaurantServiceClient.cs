@@ -1,5 +1,5 @@
 ﻿using FoodDeliveryService.APIGateway.Commands;
-using FoodDeliveryService.APIGateway.QueueClients;
+using FoodDeliveryService.APIGateway.MessageBrokerClients;
 
 namespace FoodDeliveryService.APIGateway.Services
 {

@@ -1,10 +1,7 @@
-using FoodDeliveryService.APIGateway.Commands;
 using FoodDeliveryService.APIGateway.Configuration;
-using FoodDeliveryService.APIGateway.QueueClients;
-using FoodDeliveryService.APIGateway.QueueClients.Factory;
+using FoodDeliveryService.APIGateway.MessageBrokerClients.RabbitMQ;
 using FoodDeliveryService.APIGateway.Services;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,7 +51,6 @@ static void SetupApiGatewayConfiguration(IConfiguration configuration, IServiceC
 
 static void ConfigureDependencyInjection(IServiceCollection services)
 {
-    services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();
     services.AddSingleton<OrderServiceClient>();
-    services.AddSingleton<IConnectionFactory, ConnectionFactory>();
+    services.RegisterRabbitMQDependencies();
 }

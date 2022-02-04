@@ -1,4 +1,5 @@
-﻿using FoodDeliveryService.APIGateway.Services;
+﻿using FoodDeliveryService.APIGateway.Commands;
+using FoodDeliveryService.APIGateway.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,10 @@ namespace FoodDeliveryService.APIGateway.Controllers
     public class OrdersController : ControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromServices]OrderServiceClient orderServiceClient)
+        public async Task<IActionResult> CreateOrder([FromBody]CreateOrderCommand createOrderCommand,
+            [FromServices]OrderServiceClient orderServiceClient)
         {
-            await orderServiceClient.CreateOrder(new Commands.CreateOrderCommand());
+            await orderServiceClient.CreateOrder(createOrderCommand);
             return Ok();
         }
     }

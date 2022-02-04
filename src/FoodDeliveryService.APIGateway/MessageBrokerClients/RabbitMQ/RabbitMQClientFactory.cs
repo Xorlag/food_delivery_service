@@ -1,7 +1,6 @@
-﻿using FoodDeliveryService.APIGateway.Exceptions;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 
-namespace FoodDeliveryService.APIGateway.QueueClients.Factory
+namespace FoodDeliveryService.APIGateway.MessageBrokerClients.RabbitMQ
 {
     public class RabbitMQClientFactory : IMessageBrokerClientFactory
     {
@@ -14,7 +13,7 @@ namespace FoodDeliveryService.APIGateway.QueueClients.Factory
 
         public IMessageBrokerClient CreateClient(MessageBrokerClientOptions options)
         {
-           return new RabbitMQClient(_connectionFactory, options);
+            return new RabbitMQClient(_connectionFactory, options);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FoodDeliveryService.APIGateway.QueueClients
+﻿namespace FoodDeliveryService.APIGateway.MessageBrokerClients
 {
     public interface IMessageBrokerClient
     {
