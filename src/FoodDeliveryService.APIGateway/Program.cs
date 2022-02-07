@@ -1,11 +1,11 @@
+using Microsoft.AspNetCore.Mvc.Versioning;
 using FoodDeliveryService.APIGateway.Configuration;
-using FoodDeliveryService.APIGateway.Core.Mappers;
-using FoodDeliveryService.APIGateway.Core.Models.DomainCommands;
 using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests;
 using FoodDeliveryService.APIGateway.InboundAdapters.Mappers;
-using FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ;
 using FoodDeliveryService.APIGateway.Services.OrderService;
-using Microsoft.AspNetCore.Mvc.Versioning;
+using FoodDeliveryService.Messaging.RabbitMQ;
+using OrderService.Messages;
+using FoodDeliveryService.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
