@@ -1,4 +1,8 @@
 using FoodDeliveryService.APIGateway.Configuration;
+using FoodDeliveryService.APIGateway.Core.Mappers;
+using FoodDeliveryService.APIGateway.Core.Models.DomainCommands;
+using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests;
+using FoodDeliveryService.APIGateway.InboundAdapters.Mappers;
 using FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ;
 using FoodDeliveryService.APIGateway.Services.OrderService;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -52,5 +56,6 @@ static void SetupApiGatewayConfiguration(IConfiguration configuration, IServiceC
 static void ConfigureDependencyInjection(IServiceCollection services)
 {
     services.AddSingleton<OrderServiceClient>();
+    services.AddSingleton<IMapper<CreateOrderRequest, CreateOrderCommand>, CreateOrderRequestToCommandMapper>();
     services.RegisterRabbitMQDependencies();
 }
