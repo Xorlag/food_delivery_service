@@ -1,8 +1,9 @@
-﻿using RabbitMQ.Client;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
+using RabbitMQ.Client;
+using FoodDeliveryService.APIGateway.Core.Messaging;
 
-namespace FoodDeliveryService.APIGateway.MessageBrokerClients.RabbitMQ
+namespace FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ
 {
     public class RabbitMQClient : IMessageBrokerClient
     {

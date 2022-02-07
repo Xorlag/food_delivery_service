@@ -1,4 +1,4 @@
-﻿namespace FoodDeliveryService.APIGateway.Services
+﻿namespace FoodDeliveryService.APIGateway.Services.OrderService
 {
     public interface IOrderServiceConfiguration
     {

@@ -1,7 +1,7 @@
-﻿using FoodDeliveryService.APIGateway.MessageBrokerClients;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
+using FoodDeliveryService.APIGateway.Core.Messaging;
 
-namespace FoodDeliveryService.APIGateway.MessageBrokerClients.RabbitMQ
+namespace FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ
 {
     public static class DepencencyInjectionExtension
     {

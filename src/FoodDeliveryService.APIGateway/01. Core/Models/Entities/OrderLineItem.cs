@@ -1,4 +1,4 @@
-﻿namespace FoodDeliveryService.APIGateway.Commands.Models
+﻿namespace FoodDeliveryService.APIGateway.Core.Models.Entities
 {
     public class OrderLineItem
     {

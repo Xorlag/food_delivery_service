@@ -1,4 +1,4 @@
-﻿namespace FoodDeliveryService.APIGateway.MessageBrokerClients
+﻿namespace FoodDeliveryService.APIGateway.Core.Messaging
 {
     public class MessageBrokerClientOptions
     {

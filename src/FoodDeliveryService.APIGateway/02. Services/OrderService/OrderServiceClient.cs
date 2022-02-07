@@ -1,7 +1,7 @@
-﻿using FoodDeliveryService.APIGateway.Commands;
-using FoodDeliveryService.APIGateway.MessageBrokerClients;
+﻿using FoodDeliveryService.APIGateway.Core.Messaging;
+using FoodDeliveryService.APIGateway.Core.Models.DomainCommands;
 
-namespace FoodDeliveryService.APIGateway.Services
+namespace FoodDeliveryService.APIGateway.Services.OrderService
 {
     public class OrderServiceClient
     {

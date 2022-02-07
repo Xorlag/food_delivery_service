@@ -1,4 +1,4 @@
-﻿using FoodDeliveryService.APIGateway.Services;
+﻿using FoodDeliveryService.APIGateway.Services.OrderService;
 
 namespace FoodDeliveryService.APIGateway.Configuration
 {

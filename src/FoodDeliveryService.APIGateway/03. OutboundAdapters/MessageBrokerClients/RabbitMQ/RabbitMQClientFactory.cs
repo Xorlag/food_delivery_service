@@ -1,6 +1,7 @@
 ﻿using RabbitMQ.Client;
+using FoodDeliveryService.APIGateway.Core.Messaging;
 
-namespace FoodDeliveryService.APIGateway.MessageBrokerClients.RabbitMQ
+namespace FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ
 {
     public class RabbitMQClientFactory : IMessageBrokerClientFactory
     {

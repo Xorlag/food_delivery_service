@@ -1,6 +1,6 @@
-﻿using FoodDeliveryService.APIGateway.Commands.Models;
+﻿using FoodDeliveryService.APIGateway.Core.Models.Entities;
 
-namespace FoodDeliveryService.APIGateway.Commands
+namespace FoodDeliveryService.APIGateway.Core.Models.DomainCommands
 {
     public class CreateOrderCommand
     {

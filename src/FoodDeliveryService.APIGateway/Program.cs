@@ -1,6 +1,6 @@
 using FoodDeliveryService.APIGateway.Configuration;
-using FoodDeliveryService.APIGateway.MessageBrokerClients.RabbitMQ;
-using FoodDeliveryService.APIGateway.Services;
+using FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ;
+using FoodDeliveryService.APIGateway.Services.OrderService;
 using Microsoft.AspNetCore.Mvc.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
