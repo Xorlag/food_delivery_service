@@ -9,6 +9,6 @@ namespace FoodDeliveryService.DataAccess.DataOperation
     public enum DataOperationResultStatus
     {
         Success = 0,
-        Error = 1,
+        Failure = 1,
     }
 }

@@ -1,14 +1,39 @@
-﻿using FoodDeliveryService.DataAccess.DataOperation;
+﻿using Dapper;
+using FoodDeliveryService.DataAccess.DataOperation;
 using OrderService.Domain.Entities;
 using OrderService.Domain.Repository;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace OrderService.DataAccess
 {
     public class OrderServiceRepository : IOrderServiceRepository
     {
-        public async Task<DataOperationResult> CreateOrderAsync(Order order)
+        private readonly string _connectionString;
+
+        public OrderServiceRepository(string connectionString)
         {
-            throw new NotImplementedException();
+            _connectionString = connectionString;
+        }
+
+        public async Task<DataOperationResult> CreateOrderAsync(OrderDetails order)
+        {
+            try
+            {
+                using IDbConnection sqlConnection = new SqlConnection(_connectionString);
+                var sqlQuery = @$"INSERT INTO Orders(OrderId, OrderStatus)
+                                  VALUES(@orderId, @orderStatus)";
+                await sqlConnection.ExecuteAsync(sqlQuery, new
+                {
+                    orderId = order.OrderId,
+                    orderStatus = OrderStatus.ApprovalPending
+                });
+                return DataOperationResult.Success();
+            }
+            catch (Exception ex)
+            {
+                return new DataOperationResult(DataOperationResultStatus.Failure, message: ex.Message);
+            }
         }
 
         public Task<Order> GetOrderByIdAsync(Guid orderId)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderService.Domain.Entities
 {
-    internal class OrderDetails
+    public class OrderDetails
     {
         public Guid OrderId { get; set; }
         public Guid RestaurantId { get; set; }

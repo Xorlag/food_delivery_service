@@ -8,16 +8,16 @@ namespace OrderService.Domain.Entities
         public Guid Id { get; set; }
         public Guid RestaurantId { get; set; }
         public IEnumerable<OrderLineItem> OrderLineItems { get; set; }
-        public OrderState State { get; set; }
+        public OrderStatus State { get; set; }
         public IEnumerable<OrderDomainEvent> NoteApproved()
         {
             switch (State)
             {
-                case OrderState.ApprovalPending:
-                    State = OrderState.Approved;
+                case OrderStatus.ApprovalPending:
+                    State = OrderStatus.Approved;
                     break;
                 default:
-                    throw new UnsupportedStateTransitionException(State, OrderState.Approved);
+                    throw new UnsupportedStateTransitionException(State, OrderStatus.Approved);
             }
             return new OrderDomainEvent[]{
                 new OrderApprovedEvent()

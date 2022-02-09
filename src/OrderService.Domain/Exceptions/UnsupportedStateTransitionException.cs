@@ -4,10 +4,10 @@ namespace OrderService.Domain.Exceptions
 {
     public class UnsupportedStateTransitionException : Exception
     {
-        private readonly OrderState _originalState;
-        private readonly OrderState _targetState;
+        private readonly OrderStatus _originalState;
+        private readonly OrderStatus _targetState;
 
-        public UnsupportedStateTransitionException(OrderState originalState, OrderState targateState)
+        public UnsupportedStateTransitionException(OrderStatus originalState, OrderStatus targateState)
         {
             _originalState = originalState;
             _targetState = targateState;

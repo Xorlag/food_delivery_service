@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderService.Domain.Entities
 {
-    public enum OrderState
+    public enum OrderStatus
     {
         ApprovalPending,
         Approved,

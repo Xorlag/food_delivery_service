@@ -15,14 +15,7 @@ namespace OrderService.Domain.Services
 
         internal async Task<ServiceOperationResult> CreateOrder(OrderDetails orderDetails)
         {
-            var order = new Order()
-            {
-                OrderLineItems = orderDetails.OrderLineItems,
-                RestaurantId = orderDetails.RestaurantId,
-                Id = orderDetails.OrderId,
-                State = OrderState.ApprovalPending
-            };
-            var dataOperationResult = await _repository.CreateOrderAsync(order);
+            var dataOperationResult = await _repository.CreateOrderAsync(orderDetails);
             if (dataOperationResult.IsSuccess)
             {
                 return new ServiceOperationResult(ServiceOperationResultStatus.Success);
