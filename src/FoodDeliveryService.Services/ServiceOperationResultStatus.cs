@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderService.Domain.Services
+namespace FoodDeliveryService.Services
 {
-    internal class ServiceOperationResult
+    public enum ServiceOperationResultStatus
     {
+        Success = 0,
+        Failure = 1,
     }
 }

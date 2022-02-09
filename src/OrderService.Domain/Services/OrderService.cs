@@ -1,9 +1,6 @@
-﻿using OrderService.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FoodDeliveryService.Services;
+using OrderService.Domain.Entities;
+using OrderService.Domain.Repository;
 
 namespace OrderService.Domain.Services
 {
@@ -15,6 +12,7 @@ namespace OrderService.Domain.Services
         {
             _repository = repository;
         }
+
         internal async Task<ServiceOperationResult> CreateOrder(OrderDetails orderDetails)
         {
             var order = new Order()
@@ -24,8 +22,15 @@ namespace OrderService.Domain.Services
                 Id = orderDetails.OrderId,
                 State = OrderState.ApprovalPending
             };
-            _repository.SaveOrder(order);
-            return new ServiceOperationResult();
+            var dataOperationResult = await _repository.CreateOrderAsync(order);
+            if (dataOperationResult.IsSuccess)
+            {
+                return new ServiceOperationResult(ServiceOperationResultStatus.Success);
+            }
+            else
+            {
+                return new ServiceOperationResult(ServiceOperationResultStatus.Failure, dataOperationResult.Message);
+            }
         }
     }
 }

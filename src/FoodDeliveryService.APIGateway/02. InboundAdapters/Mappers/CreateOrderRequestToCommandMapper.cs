@@ -11,7 +11,7 @@ namespace FoodDeliveryService.APIGateway.InboundAdapters.Mappers
         {
             return new CreateOrderCommand()
             {
-                CommandId = source.CommandId,
+                OrderId = source.OrderId,
                 RestaurantId = source.RestaurantId,
                 OrderLineItems = source.OrderLineItems.Select(oli => new OrderLineItem()
                 {

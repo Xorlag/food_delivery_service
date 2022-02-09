@@ -11,31 +11,43 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.APIGate
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderService", "OrderService", "{F803C1B4-80E9-4EC6-9FE3-12AE97E08D22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Domain", "OrderService.Domain\OrderService.Domain.csproj", "{12E66A9E-C00C-4244-84EC-A2AC435A5CD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Domain", "OrderService.Domain\OrderService.Domain.csproj", "{12E66A9E-C00C-4244-84EC-A2AC435A5CD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8CC8448B-C5A6-4835-9E23-F0197E683505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.Messaging", "FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj", "{ECF9707F-C42C-42B4-A404-41CEB36A6680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Messaging", "FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj", "{ECF9707F-C42C-42B4-A404-41CEB36A6680}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messaging", "Messaging", "{E389419A-455D-420C-A463-8B1FA7B848AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.Messaging.RabbitMQ", "FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj", "{00E65E02-0F16-461B-B91E-E2C6DE935C26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Messaging.RabbitMQ", "FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj", "{00E65E02-0F16-461B-B91E-E2C6DE935C26}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{538CC513-0553-480C-86D8-70337FE67BAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{26099CF6-4863-432B-9261-A30DDE5C52A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.MessageBrokerListener", "OrderService.MessageBrokerListener\OrderService.MessageBrokerListener.csproj", "{68F276A8-79CA-4AE0-B614-5ACF6D17C7BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.MessageBrokerListener", "OrderService.MessageBrokerListener\OrderService.MessageBrokerListener.csproj", "{68F276A8-79CA-4AE0-B614-5ACF6D17C7BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestaurantService", "RestaurantService", "{337C2F79-886A-4D50-8868-F50B112F0175}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantService.Domain", "RestaurantService.Domain\RestaurantService.Domain.csproj", "{5D7F58CD-C8AE-4773-B4A4-309E6DD3DE44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantService.Domain", "RestaurantService.Domain\RestaurantService.Domain.csproj", "{5D7F58CD-C8AE-4773-B4A4-309E6DD3DE44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Messages", "OrderService.MessageEnvelopeTypes\OrderService.Messages.csproj", "{2F93B9C7-DFB1-4470-BD7E-33E3EA0A5264}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Messages", "OrderService.MessageEnvelopeTypes\OrderService.Messages.csproj", "{2F93B9C7-DFB1-4470-BD7E-33E3EA0A5264}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mappers", "Mappers", "{8E165531-92D7-4133-99A0-45845CE19744}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.Mappers", "FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj", "{FF898825-EEF7-4658-AF5C-1994188C9A3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Mappers", "FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj", "{FF898825-EEF7-4658-AF5C-1994188C9A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.Messaging.AzureServiceBus", "FoodDeliveryService.Messaging.AzureServiceBus\FoodDeliveryService.Messaging.AzureServiceBus.csproj", "{B2181F32-6DFF-4625-A301-DCADD367E4F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.DataAccess", "OrderService.DataAccess\OrderService.DataAccess.csproj", "{45EAD338-E649-4D59-8F2B-D686EFE433AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.DataAccess", "FoodDeliveryService.DataAccess\FoodDeliveryService.DataAccess.csproj", "{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{35504B68-EEE6-4708-A08F-5BF0FE0DF198}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E486DF84-5ECF-42B2-B6EE-9C2C64A011DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.Services", "FoodDeliveryService.Services\FoodDeliveryService.Services.csproj", "{A9300148-F7C5-4170-840C-4C5B11BABFAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +91,22 @@ Global
 		{FF898825-EEF7-4658-AF5C-1994188C9A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF898825-EEF7-4658-AF5C-1994188C9A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF898825-EEF7-4658-AF5C-1994188C9A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2181F32-6DFF-4625-A301-DCADD367E4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2181F32-6DFF-4625-A301-DCADD367E4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2181F32-6DFF-4625-A301-DCADD367E4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2181F32-6DFF-4625-A301-DCADD367E4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45EAD338-E649-4D59-8F2B-D686EFE433AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45EAD338-E649-4D59-8F2B-D686EFE433AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45EAD338-E649-4D59-8F2B-D686EFE433AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45EAD338-E649-4D59-8F2B-D686EFE433AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9300148-F7C5-4170-840C-4C5B11BABFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9300148-F7C5-4170-840C-4C5B11BABFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9300148-F7C5-4170-840C-4C5B11BABFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9300148-F7C5-4170-840C-4C5B11BABFAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +124,12 @@ Global
 		{2F93B9C7-DFB1-4470-BD7E-33E3EA0A5264} = {F803C1B4-80E9-4EC6-9FE3-12AE97E08D22}
 		{8E165531-92D7-4133-99A0-45845CE19744} = {8CC8448B-C5A6-4835-9E23-F0197E683505}
 		{FF898825-EEF7-4658-AF5C-1994188C9A3B} = {8E165531-92D7-4133-99A0-45845CE19744}
+		{B2181F32-6DFF-4625-A301-DCADD367E4F6} = {E389419A-455D-420C-A463-8B1FA7B848AC}
+		{45EAD338-E649-4D59-8F2B-D686EFE433AA} = {F803C1B4-80E9-4EC6-9FE3-12AE97E08D22}
+		{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5} = {35504B68-EEE6-4708-A08F-5BF0FE0DF198}
+		{35504B68-EEE6-4708-A08F-5BF0FE0DF198} = {8CC8448B-C5A6-4835-9E23-F0197E683505}
+		{E486DF84-5ECF-42B2-B6EE-9C2C64A011DB} = {8CC8448B-C5A6-4835-9E23-F0197E683505}
+		{A9300148-F7C5-4170-840C-4C5B11BABFAC} = {E486DF84-5ECF-42B2-B6EE-9C2C64A011DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {218CC091-D180-467F-8CA6-72B654287E49}

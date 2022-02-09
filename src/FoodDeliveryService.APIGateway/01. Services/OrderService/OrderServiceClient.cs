@@ -22,7 +22,7 @@ namespace FoodDeliveryService.APIGateway.Services.OrderService
                 HostUrl = _configuration.OrderServiceMessageBrokerUrl,
                 QueueName = _configuration.OrderServiceQueueName
             });
-            var messageEnvelope = new MessageEnvelope(messageId: command.CommandId,
+            var messageEnvelope = new MessageEnvelope(messageId: command.OrderId,
                 message: command,
                 type: OrderServiceMessageEnvelopeTypes.CreateOrderCommand);
             await messageBrokerClient.SendMessage(messageEnvelope);

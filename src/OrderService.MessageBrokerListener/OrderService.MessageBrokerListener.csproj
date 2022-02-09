@@ -9,6 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj" />
+    <ProjectReference Include="..\OrderService.MessageEnvelopeTypes\OrderService.Messages.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
