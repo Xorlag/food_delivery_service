@@ -1,6 +1,7 @@
 ﻿using FoodDeliveryService.Messaging;
 using OrderService.MessageEnvelopeTypes;
 using OrderService.Messages;
+using System.Text.Json;
 
 namespace FoodDeliveryService.APIGateway.Services.OrderService
 {
@@ -23,7 +24,7 @@ namespace FoodDeliveryService.APIGateway.Services.OrderService
                 QueueName = _configuration.OrderServiceQueueName
             });
             var messageEnvelope = new MessageEnvelope(messageId: command.OrderId,
-                message: command,
+                message: JsonSerializer.Serialize(command),
                 type: OrderServiceMessageEnvelopeTypes.CreateOrderCommand);
             await messageBrokerClient.SendMessage(messageEnvelope);
         }

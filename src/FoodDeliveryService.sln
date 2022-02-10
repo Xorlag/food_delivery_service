@@ -37,17 +37,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mappers", "Mappers", "{8E16
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Mappers", "FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj", "{FF898825-EEF7-4658-AF5C-1994188C9A3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.Messaging.AzureServiceBus", "FoodDeliveryService.Messaging.AzureServiceBus\FoodDeliveryService.Messaging.AzureServiceBus.csproj", "{B2181F32-6DFF-4625-A301-DCADD367E4F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Messaging.AzureServiceBus", "FoodDeliveryService.Messaging.AzureServiceBus\FoodDeliveryService.Messaging.AzureServiceBus.csproj", "{B2181F32-6DFF-4625-A301-DCADD367E4F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.DataAccess", "OrderService.DataAccess\OrderService.DataAccess.csproj", "{45EAD338-E649-4D59-8F2B-D686EFE433AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.DataAccess", "OrderService.DataAccess\OrderService.DataAccess.csproj", "{45EAD338-E649-4D59-8F2B-D686EFE433AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.DataAccess", "FoodDeliveryService.DataAccess\FoodDeliveryService.DataAccess.csproj", "{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.DataAccess", "FoodDeliveryService.DataAccess\FoodDeliveryService.DataAccess.csproj", "{AEB900A9-EF1D-4530-987C-3EB3FF6A59C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{35504B68-EEE6-4708-A08F-5BF0FE0DF198}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E486DF84-5ECF-42B2-B6EE-9C2C64A011DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.Services", "FoodDeliveryService.Services\FoodDeliveryService.Services.csproj", "{A9300148-F7C5-4170-840C-4C5B11BABFAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Services", "FoodDeliveryService.Services\FoodDeliveryService.Services.csproj", "{A9300148-F7C5-4170-840C-4C5B11BABFAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

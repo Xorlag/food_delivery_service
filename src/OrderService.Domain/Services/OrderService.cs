@@ -4,16 +4,16 @@ using OrderService.Domain.Repository;
 
 namespace OrderService.Domain.Services
 {
-    internal class OrderService
+    public class OrderService
     {
         private readonly IOrderServiceRepository _repository;
 
-        internal OrderService(IOrderServiceRepository repository)
+        public OrderService(IOrderServiceRepository repository)
         {
             _repository = repository;
         }
 
-        internal async Task<ServiceOperationResult> CreateOrder(OrderDetails orderDetails)
+        public async Task<ServiceOperationResult> CreateOrder(OrderDetails orderDetails)
         {
             var dataOperationResult = await _repository.CreateOrderAsync(orderDetails);
             if (dataOperationResult.IsSuccess)

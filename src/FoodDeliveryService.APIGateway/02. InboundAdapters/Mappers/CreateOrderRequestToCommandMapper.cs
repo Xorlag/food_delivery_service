@@ -13,6 +13,7 @@ namespace FoodDeliveryService.APIGateway.InboundAdapters.Mappers
             {
                 OrderId = source.OrderId,
                 RestaurantId = source.RestaurantId,
+                CustomerId = source.CustomerId,
                 OrderLineItems = source.OrderLineItems.Select(oli => new OrderLineItem()
                 {
                     MenuItemId = oli.MenuItemId,

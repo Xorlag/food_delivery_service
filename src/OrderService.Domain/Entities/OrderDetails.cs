@@ -10,6 +10,7 @@ namespace OrderService.Domain.Entities
     {
         public Guid OrderId { get; set; }
         public Guid RestaurantId { get; set; }
+        public Guid CustomerId { get; set; }
         public IEnumerable<OrderLineItem> OrderLineItems { get; set; }
     }
 }

@@ -21,13 +21,15 @@ namespace OrderService.DataAccess
             try
             {
                 using IDbConnection sqlConnection = new SqlConnection(_connectionString);
-                var sqlQuery = @$"INSERT INTO Orders(OrderId, OrderStatus)
-                                  VALUES(@orderId, @orderStatus)";
+                var sqlQuery = @$"INSERT INTO Orders(OrderId, CustomerId, OrderStatus)
+                                  VALUES(@orderId, @customerId, @orderStatus)";
                 await sqlConnection.ExecuteAsync(sqlQuery, new
                 {
                     orderId = order.OrderId,
+                    customerId = order.CustomerId,
                     orderStatus = OrderStatus.ApprovalPending
                 });
+
                 return DataOperationResult.Success();
             }
             catch (Exception ex)
