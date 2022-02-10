@@ -1,7 +1,8 @@
 ﻿using OrderService.Domain.DomainEvents;
+using OrderService.Domain.Entities;
 using OrderService.Domain.Exceptions;
 
-namespace OrderService.Domain.Entities
+namespace OrderService.Domain.Models.Entities
 {
     public class Order
     {

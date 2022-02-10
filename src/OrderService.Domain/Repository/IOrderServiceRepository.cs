@@ -1,5 +1,6 @@
 ﻿using FoodDeliveryService.DataAccess.DataOperation;
 using OrderService.Domain.Entities;
+using OrderService.Domain.Models.Entities;
 
 namespace OrderService.Domain.Repository
 {

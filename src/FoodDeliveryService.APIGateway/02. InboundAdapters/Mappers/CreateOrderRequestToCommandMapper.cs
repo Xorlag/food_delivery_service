@@ -1,6 +1,6 @@
 ﻿using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests;
 using FoodDeliveryService.Mappers;
-using OrderService.Domain.Entities;
+using OrderService.Domain.Models.Entities;
 using OrderService.Messages;
 
 namespace FoodDeliveryService.APIGateway.InboundAdapters.Mappers
@@ -16,9 +16,18 @@ namespace FoodDeliveryService.APIGateway.InboundAdapters.Mappers
                 CustomerId = source.CustomerId,
                 OrderLineItems = source.OrderLineItems.Select(oli => new OrderLineItem()
                 {
-                    MenuItemId = oli.MenuItemId,
+                    OrderId = source.OrderId,
+                    MenuLineItemId = oli.MenuLineItemId,
                     Quantity = oli.Quantity
-                }).ToArray()
+                }).ToArray(),
+                DeliveryInfo = new DeliveryInfo
+                {
+                    ApartmentsNumber = source.DeliveryInfo.ApartmentsNumber,
+                    BuildingNumber = source.DeliveryInfo.BuildingNumber,
+                    City = source.DeliveryInfo.City,
+                    Street = source.DeliveryInfo.Street,
+                    OrderId = source.OrderId,
+                }
             };
         }
     }

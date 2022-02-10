@@ -49,6 +49,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Services", "FoodDeliveryService.Services\FoodDeliveryService.Services.csproj", "{A9300148-F7C5-4170-840C-4C5B11BABFAC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerService", "CustomerService", "{E5B4B5D1-BFAF-4FF5-A1CB-9804332C3231}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeliveryService", "DeliveryService", "{E32A2F55-E242-4DD6-A5D2-750983021F43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountingService", "AccountingService", "{93DDBC01-D004-44F4-A260-E2BB71E1B9AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

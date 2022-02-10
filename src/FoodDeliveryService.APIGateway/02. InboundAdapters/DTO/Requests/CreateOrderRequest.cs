@@ -8,5 +8,6 @@ namespace FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests
         public Guid RestaurantId { get; set; }
         public Guid CustomerId { get; set; }
         public OrderLineItemDTO[] OrderLineItems { get; set; }
+        public DeliveryInfoDTO DeliveryInfo { get; set; }
     }
 }

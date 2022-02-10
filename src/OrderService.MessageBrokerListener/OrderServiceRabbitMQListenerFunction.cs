@@ -36,6 +36,7 @@ namespace OrderService.MessageBrokerListener
                         CustomerId = createOrderCommand.CustomerId,
                         OrderLineItems = createOrderCommand.OrderLineItems,
                         RestaurantId = createOrderCommand.RestaurantId,
+                        DeliveryInfo = createOrderCommand.DeliveryInfo,
                     });
                     break;
             }
