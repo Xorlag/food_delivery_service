@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace OrderService.Domain.Proxies
 {
-    internal class RestaurantServiceProxy
+    public class RestaurantServiceProxy
     {
+        public void CreateTicket()
+        {
 
+        }
     }
 }
