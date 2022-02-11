@@ -1,4 +1,5 @@
 ﻿using FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ;
+using FoodDeliveryService.DataAccess.DbConnection;
 using FoodDeliveryService.Messaging;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Options;
 using OrderService.DataAccess;
 using OrderService.Domain.Repository;
 using OrderService.MessageBrokerListener.Configuration;
+using OrderService.MessageBrokerListener.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +28,10 @@ namespace OrderService.MessageBrokerListener
 
         private void SetupConfiguration(IServiceCollection services)
         {
-            services.AddOptions<OrderServiceConfiguration>()
+            services.AddOptions<DbConnectionStringsConfiguration>()
                 .Configure<IConfiguration>((settings, configuration) =>
                 {
-                    configuration.GetSection("OrderService").Bind(settings);
+                    configuration.GetSection("DbConnectionStrings").Bind(settings);
                 });
         }
 
@@ -37,11 +39,8 @@ namespace OrderService.MessageBrokerListener
         {
             services.AddSingleton<OrderService.Domain.Services.OrderService>();
             services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();
-            services.AddSingleton<IOrderServiceRepository, OrderServiceRepository>(sp =>
-            {
-                var configuration = sp.GetRequiredService<IOptions<OrderServiceConfiguration>>();
-                return new OrderServiceRepository(configuration.Value.DatabaseConnectionString);
-            });
+            services.AddSingleton<IOrderServiceRepository, OrderServiceRepository>();
+            services.AddSingleton<IDbConnectionFactory, OrderServiceDbConnectionFactory>();
         }
     }
 }

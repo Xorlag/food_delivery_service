@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace OrderService.MessageBrokerListener.Configuration
 {
-    public class OrderServiceConfiguration
+    public class DbConnectionStringsConfiguration
     {
-        public string RabbitMqConnectionString { get; set; }
-        public string DatabaseConnectionString { get; set; }
+        public string OrderService_DatabaseConnectionString { get; set; }
     }
 }

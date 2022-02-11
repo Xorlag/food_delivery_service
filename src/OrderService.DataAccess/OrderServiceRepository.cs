@@ -1,27 +1,27 @@
 ﻿using Dapper;
 using FoodDeliveryService.DataAccess.DataOperation;
+using FoodDeliveryService.DataAccess.DbConnection;
 using OrderService.Domain.Entities;
 using OrderService.Domain.Models.Entities;
 using OrderService.Domain.Repository;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace OrderService.DataAccess
 {
     public class OrderServiceRepository : IOrderServiceRepository
     {
-        private readonly string _connectionString;
+        private readonly IDbConnectionFactory _dbConnectionFactory;
 
-        public OrderServiceRepository(string connectionString)
+        public OrderServiceRepository(IDbConnectionFactory dbConnectionFactory)
         {
-            _connectionString = connectionString;
+            _dbConnectionFactory = dbConnectionFactory;
         }
 
         public async Task<DataOperationResult> CreateOrderAsync(OrderDetails orderDetails)
         {
             try
             {
-                using IDbConnection sqlConnection = new SqlConnection(_connectionString);
+                using IDbConnection sqlConnection = _dbConnectionFactory.CreateConnection(OrderServiceDataAccessDbFactoryKeys.OrderServiceRepository);
                 sqlConnection.Open();
                 using IDbTransaction transaction = sqlConnection.BeginTransaction();
                 var createOrderSql = @$"INSERT INTO Orders(OrderId, CustomerId, RestaurantId, OrderStatus)
@@ -54,7 +54,7 @@ namespace OrderService.DataAccess
 
         public async Task<Order> GetOrderByIdAsync(Guid orderId)
         {
-            using IDbConnection dbConnection = new SqlConnection(_connectionString);
+            using IDbConnection dbConnection = _dbConnectionFactory.CreateConnection(OrderServiceDataAccessDbFactoryKeys.OrderServiceRepository);
 
             var getOrderSql = @"SELECT OrderId, CustomerId, RestaurantId, OrderStatus
                                 FROM Orders

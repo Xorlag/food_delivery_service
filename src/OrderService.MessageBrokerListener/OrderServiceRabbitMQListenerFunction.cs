@@ -13,7 +13,7 @@ namespace OrderService.MessageBrokerListener
 {
     public class OrderServiceRabbitMQListenerFunction
     {
-        private const string RABBIT_MQ_CONNECTION_STRING_SETTING = "OrderService__RabbitMqConnectionString";
+        private const string RABBIT_MQ_CONNECTION_STRING_SETTING = "RabbitMq__OrderService_ConnectionString";
         private const string RABBIT_MQ_QUEUE_NAME = "OrderServiceQueue";
         private OrderService.Domain.Services.OrderService _orderService;
 
