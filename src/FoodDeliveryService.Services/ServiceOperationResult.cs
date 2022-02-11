@@ -18,7 +18,7 @@
         {
         }
 
-        public ServiceOperationResult(T result, ServiceOperationResultStatus status) : base(status)
+        public ServiceOperationResult(T result, ServiceOperationResultStatus status = ServiceOperationResultStatus.Success) : base(status)
         {
             Result = result;
         }

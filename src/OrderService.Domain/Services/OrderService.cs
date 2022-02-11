@@ -1,5 +1,6 @@
 ﻿using FoodDeliveryService.Services;
 using OrderService.Domain.Entities;
+using OrderService.Domain.Models.Entities;
 using OrderService.Domain.Repository;
 
 namespace OrderService.Domain.Services
@@ -23,6 +24,19 @@ namespace OrderService.Domain.Services
             else
             {
                 return new ServiceOperationResult(ServiceOperationResultStatus.Failure, dataOperationResult.Message);
+            }
+        }
+
+        public async Task<ServiceOperationResult<Order>> GetOrderById(Guid OrderId)
+        {
+            try
+            {
+                var resultOrder = await _repository.GetOrderByIdAsync(OrderId);
+                return new ServiceOperationResult<Order>(resultOrder);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceOperationResult<Order>(ServiceOperationResultStatus.Failure, ex.Message);
             }
         }
     }

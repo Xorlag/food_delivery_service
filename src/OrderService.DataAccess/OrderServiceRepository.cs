@@ -24,17 +24,19 @@ namespace OrderService.DataAccess
                 using IDbConnection sqlConnection = new SqlConnection(_connectionString);
                 sqlConnection.Open();
                 using IDbTransaction transaction = sqlConnection.BeginTransaction();
-                var createOrderSql = @$"INSERT INTO Orders(OrderId, CustomerId, OrderStatus)
-                                  VALUES(@orderId, @customerId, @orderStatus)";
+                var createOrderSql = @$"INSERT INTO Orders(OrderId, CustomerId, RestaurantId, OrderStatus)
+                                  VALUES(@orderId, @customerId, @restaurantId, @orderStatus)";
                 await sqlConnection.ExecuteAsync(createOrderSql, new
                 {
                     orderId = orderDetails.OrderId,
                     customerId = orderDetails.CustomerId,
-                    orderStatus = OrderStatus.ApprovalPending
+                    orderStatus = OrderStatus.ApprovalPending,
+                    restaurantId = orderDetails.RestaurantId
                 }, transaction);
 
-                var insertOrderLineItemsSql = @$"INSERT INTO OrderLineItems(OrderLineItemId, OrderId, MenuLineItemId, Quantity)
-                                  VALUES(@orderLineItemId, @orderId, @menuLineItemId, @quantity)";
+                var insertOrderLineItemsSql = @$"INSERT INTO OrderLineItems(OrderId, MenuLineItemId, Quantity)
+                                  VALUES(@orderId, @menuLineItemId, @quantity)";
+
                 await sqlConnection.ExecuteAsync(insertOrderLineItemsSql, orderDetails.OrderLineItems, transaction);
 
                 var insertDeliveryInfoSql = @$"INSERT INTO DeliveryInfo(OrderId, City, Street, BuildingNumber, ApartmentsNumber)
@@ -50,9 +52,18 @@ namespace OrderService.DataAccess
             }
         }
 
-        public Task<Order> GetOrderByIdAsync(Guid orderId)
+        public async Task<Order> GetOrderByIdAsync(Guid orderId)
         {
-            throw new NotImplementedException();
+            using IDbConnection dbConnection = new SqlConnection(_connectionString);
+
+            var getOrderSql = @"SELECT OrderId, CustomerId, RestaurantId, OrderStatus
+                                FROM Orders
+                                WHERE OrderId = @orderId";
+            var resultOrder = await dbConnection.QueryFirstOrDefaultAsync<Order>(getOrderSql, new
+            {
+                orderId = orderId
+            });
+            return resultOrder;
         }
 
         public Task<DataOperationResult> UpdateOrderAsync(Order order)

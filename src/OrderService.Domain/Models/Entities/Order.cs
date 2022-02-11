@@ -6,9 +6,10 @@ namespace OrderService.Domain.Models.Entities
 {
     public class Order
     {
-        public Guid Id { get; set; }
+        public Guid OrderId { get; set; }
         public Guid RestaurantId { get; set; }
         public IEnumerable<OrderLineItem> OrderLineItems { get; set; }
+        public DeliveryInfo DeliveryInfo { get; set; }
         public OrderStatus State { get; set; }
         public IEnumerable<OrderDomainEvent> NoteApproved()
         {
