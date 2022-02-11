@@ -1,4 +1,11 @@
 using Microsoft.AspNetCore.Mvc.Versioning;
+using FoodDeliveryService.APIGateway.Configuration;
+using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests;
+using FoodDeliveryService.APIGateway.InboundAdapters.Mappers;
+using FoodDeliveryService.APIGateway.Services.OrderService;
+using FoodDeliveryService.Messaging.RabbitMQ;
+using OrderService.Messages;
+using FoodDeliveryService.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +28,7 @@ builder.Services.AddVersionedApiExplorer(options =>
 });
 
 ConfigureDependencyInjection(builder.Services);
+SetupApiGatewayConfiguration(builder.Configuration, builder.Services);
 
 var app = builder.Build();
 
@@ -39,7 +47,15 @@ app.MapControllers();
 
 app.Run();
 
+static void SetupApiGatewayConfiguration(IConfiguration configuration, IServiceCollection services)
+{
+    var configurationInstance = new ApiGatewayConfiguration(configuration);
+    services.AddSingleton<IOrderServiceConfiguration>(configurationInstance);
+}
+
 static void ConfigureDependencyInjection(IServiceCollection services)
 {
-    //services.AddSingleton<>
+    services.AddSingleton<OrderServiceClient>();
+    services.AddSingleton<IMapper<CreateOrderRequest, CreateOrderCommand>, CreateOrderRequestToCommandMapper>();
+    services.RegisterRabbitMQDependencies();
 }
