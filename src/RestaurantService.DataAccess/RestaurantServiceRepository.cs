@@ -1,17 +1,24 @@
 ﻿using FoodDeliveryService.DataAccess.DataOperation;
+using FoodDeliveryService.DataAccess.Sql.DbConnection;
+using RestaurantService.Domain.Entities;
 using RestaurantService.Domain.Repositories;
+using System.Data;
 
 namespace RestaurantService.DataAccess
 {
     public class RestaurantServiceRepository : IRestaurantServiceRepository
     {
-        public RestaurantServiceRepository(string connectionString)
+        private readonly IDbConnectionFactory<RestaurantServiceRepository> _dbConnectionFactory;
+
+        public RestaurantServiceRepository(IDbConnectionFactory<RestaurantServiceRepository> dbConnectionFactory)
         {
-            
+            _dbConnectionFactory = dbConnectionFactory;
         }
-        public DataOperationResult CreateTicket(TicketDetails ticketDetails)
+
+        public async Task<DataOperationResult> CreateTicket(TicketDetails ticketDetails)
         {
-            throw new NotImplementedException();
+            using IDbConnection sqlConnection = _dbConnectionFactory.CreateConnection();
+            return null;
         }
     }
 }

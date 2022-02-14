@@ -3,7 +3,7 @@ using System.Text.Json;
 using RabbitMQ.Client;
 using FoodDeliveryService.Messaging;
 
-namespace FoodDeliveryService.APIGateway.OutboundAdapters.MessageBrokerClients.RabbitMQ
+namespace FoodDeliveryService.Messaging.RabbitMQ
 {
     public class RabbitMQClient : IMessageBrokerClient
     {

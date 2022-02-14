@@ -1,7 +1,7 @@
 ﻿
-namespace OrderService.Domain.Models.Entities
+namespace RestaurantService.Domain.Entities
 {
-    public class OrderLineItem
+    public class TicketLineItem
     {
         public Guid OrderId { get; set; }
         public Guid MenuLineItemId { get; set; }

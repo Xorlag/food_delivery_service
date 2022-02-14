@@ -65,6 +65,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{86
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIGateway", "APIGateway", "{03E4F748-90E5-4D8A-8650-F5D1BF4F48AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.DataAccess.Sql", "FoodDeliveryService.DataAccess.Sql\FoodDeliveryService.DataAccess.Sql.csproj", "{F91721F8-FDD2-4031-A883-B0766DC320E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{D1A4B052-603A-43E7-8C02-BAD167B09F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1A4B052-603A-43E7-8C02-BAD167B09F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1A4B052-603A-43E7-8C02-BAD167B09F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91721F8-FDD2-4031-A883-B0766DC320E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91721F8-FDD2-4031-A883-B0766DC320E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91721F8-FDD2-4031-A883-B0766DC320E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91721F8-FDD2-4031-A883-B0766DC320E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,6 +173,7 @@ Global
 		{BAD8B97F-7AAA-4DB5-8BA3-AFCA45FF6218} = {337C2F79-886A-4D50-8868-F50B112F0175}
 		{7E0675EC-474C-4BD4-9820-DD77BD1CEDB8} = {337C2F79-886A-4D50-8868-F50B112F0175}
 		{D1A4B052-603A-43E7-8C02-BAD167B09F20} = {337C2F79-886A-4D50-8868-F50B112F0175}
+		{F91721F8-FDD2-4031-A883-B0766DC320E4} = {35504B68-EEE6-4708-A08F-5BF0FE0DF198}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {218CC091-D180-467F-8CA6-72B654287E49}

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodDeliveryService.DataAccess.Sql\FoodDeliveryService.DataAccess.Sql.csproj" />
     <ProjectReference Include="..\OrderService.Domain\OrderService.Domain.csproj" />
   </ItemGroup>
 

@@ -1,18 +1,19 @@
 ﻿using Dapper;
 using FoodDeliveryService.DataAccess.DataOperation;
-using FoodDeliveryService.DataAccess.DbConnection;
+using FoodDeliveryService.DataAccess.Sql.DbConnection;
 using OrderService.Domain.Entities;
 using OrderService.Domain.Models.Entities;
 using OrderService.Domain.Repository;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace OrderService.DataAccess
 {
     public class OrderServiceRepository : IOrderServiceRepository
     {
-        private readonly IDbConnectionFactory _dbConnectionFactory;
+        private readonly IDbConnectionFactory<OrderServiceRepository> _dbConnectionFactory;
 
-        public OrderServiceRepository(IDbConnectionFactory dbConnectionFactory)
+        public OrderServiceRepository(IDbConnectionFactory<OrderServiceRepository> dbConnectionFactory)
         {
             _dbConnectionFactory = dbConnectionFactory;
         }
@@ -21,7 +22,7 @@ namespace OrderService.DataAccess
         {
             try
             {
-                using IDbConnection sqlConnection = _dbConnectionFactory.CreateConnection(OrderServiceDataAccessDbFactoryKeys.OrderServiceRepository);
+                using IDbConnection sqlConnection = _dbConnectionFactory.CreateConnection();
                 sqlConnection.Open();
                 using IDbTransaction transaction = sqlConnection.BeginTransaction();
                 var createOrderSql = @$"INSERT INTO Orders(OrderId, CustomerId, RestaurantId, OrderStatus)
@@ -46,7 +47,7 @@ namespace OrderService.DataAccess
                 transaction.Commit();
                 return DataOperationResult.Success();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 return new DataOperationResult(DataOperationResultStatus.Failure, message: ex.Message);
             }
@@ -54,7 +55,7 @@ namespace OrderService.DataAccess
 
         public async Task<Order> GetOrderByIdAsync(Guid orderId)
         {
-            using IDbConnection dbConnection = _dbConnectionFactory.CreateConnection(OrderServiceDataAccessDbFactoryKeys.OrderServiceRepository);
+            using IDbConnection dbConnection = _dbConnectionFactory.CreateConnection();
 
             var getOrderSql = @"SELECT OrderId, CustomerId, RestaurantId, OrderStatus
                                 FROM Orders

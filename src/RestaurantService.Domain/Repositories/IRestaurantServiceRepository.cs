@@ -1,14 +1,11 @@
 ﻿using FoodDeliveryService.DataAccess.DataOperation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using RestaurantService.Domain.Entities;
 using System.Threading.Tasks;
 
 namespace RestaurantService.Domain.Repositories
 {
     public interface IRestaurantServiceRepository
     {
-        public DataOperationResult CreateTicket(TicketDetails ticketDetails);
+        public Task<DataOperationResult> CreateTicket(TicketDetails ticketDetails);
     }
 }

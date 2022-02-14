@@ -2,15 +2,16 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FoodDeliveryService.Messaging;
-using OrderService.DataAccess;
-using OrderService.Domain.Repository;
-using OrderService.MessageBrokerListener.Configuration;
 using FoodDeliveryService.DataAccess.Sql.DependencyInjection;
 using Microsoft.Extensions.Options;
+using RestaurantService.MessageBrokerListener;
 using FoodDeliveryService.Messaging.RabbitMQ;
+using RestaurantService.MessageBrokerListener.Configuration;
+using RestaurantService.Domain.Repositories;
+using RestaurantService.DataAccess;
 
-[assembly: FunctionsStartup(typeof(OrderService.MessageBrokerListener.Startup))]
-namespace OrderService.MessageBrokerListener
+[assembly: FunctionsStartup(typeof(Startup))]
+namespace RestaurantService.MessageBrokerListener
 {
     public class Startup : FunctionsStartup
     {
@@ -31,14 +32,14 @@ namespace OrderService.MessageBrokerListener
 
         private void ConfigureDependencyInjection(IServiceCollection services)
         {
-            services.AddSingleton<OrderService.Domain.Services.OrderService>();
+            services.AddSingleton<RestaurantService.Domain.Services.RestaurantService>();
             services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();
-            services.AddSingleton<IOrderServiceRepository, OrderServiceRepository>();
+            services.AddSingleton<IRestaurantServiceRepository, RestaurantServiceRepository>();
 
-            services.RegisterDbConnectionFactory<OrderServiceRepository>(serviceProvider =>
+            services.RegisterDbConnectionFactory<RestaurantServiceRepository>(serviceProvider =>
             {
                 var dbConnectionStringsConfiguration = serviceProvider.GetService<IOptions<DbConnectionStringsConfiguration>>();
-                return dbConnectionStringsConfiguration.Value.OrderService_DatabaseConnectionString;
+                return dbConnectionStringsConfiguration.Value.RestaurantService_DatabaseConnectionString;
             });
         }
     }
