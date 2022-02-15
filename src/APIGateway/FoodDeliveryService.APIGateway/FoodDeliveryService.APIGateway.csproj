@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>33271057-d1d7-4e83-bb4d-9ba5182d3da6</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Mappers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
+    <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\OrderService\OrderService.Proxy\OrderService.Proxy.csproj" />
+  </ItemGroup>
+
+</Project>
