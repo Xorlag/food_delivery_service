@@ -52,7 +52,7 @@ namespace OrderService.MessageBrokerListener
                 return restaurantServiceProxyConfiguration.Value;
             });
 
-            services.RegisterRabbitMQDependencies();
+            services.UseRabbitMQClientFactory();
 
             services.RegisterDbConnectionFactory<OrderServiceRepository>(serviceProvider =>
             {

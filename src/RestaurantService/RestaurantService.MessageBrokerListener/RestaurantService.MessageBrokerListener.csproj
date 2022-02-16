@@ -10,7 +10,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\DataAccess\FoodDeliveryService.DataAccess.Sql\FoodDeliveryService.DataAccess.Sql.csproj" />
-    <ProjectReference Include="..\..\Core\Mappers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
+    <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
+    <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.MessageHandling\FoodDeliveryService.MessageHandling.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj" />
     <ProjectReference Include="..\RestaurantService.DataAccess\RestaurantService.DataAccess.csproj" />
@@ -25,5 +26,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 </Project>

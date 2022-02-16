@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests;
 using FoodDeliveryService.Mappers;
 using OrderService.Proxy;
 using OrderService.DTO;
+using FoodDeliveryService.APIGateway.DTO.Requests;
 
-namespace FoodDeliveryService.APIGateway.InboundAdapters.Controllers
+namespace FoodDeliveryService.APIGateway.Controllers
 {
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]

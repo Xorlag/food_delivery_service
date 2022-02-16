@@ -8,6 +8,7 @@ namespace RestaurantService.Messages
 {
     public class RestaurantServiceMessageEnvelopeTypes
     {
-        public const string CreateTicketCommand = "CreateTicket";
+        public const string CreateTicketCommand = "CreateTicketCommand";
+        public const string AcceptTicketCommand = "AcceptTicketCommand";
     }
 }

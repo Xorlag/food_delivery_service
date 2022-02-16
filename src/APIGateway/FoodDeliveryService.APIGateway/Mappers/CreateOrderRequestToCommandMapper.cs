@@ -1,9 +1,8 @@
-﻿using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests;
+﻿using FoodDeliveryService.APIGateway.DTO.Requests;
 using FoodDeliveryService.Mappers;
 using OrderService.DTO;
-using OrderService.Messages;
 
-namespace FoodDeliveryService.APIGateway.InboundAdapters.Mappers
+namespace FoodDeliveryService.APIGateway.Mappers
 {
     public class CreateOrderRequestToCommandMapper : IMapper<CreateOrderRequest, OrderDetailsDTO>
     {

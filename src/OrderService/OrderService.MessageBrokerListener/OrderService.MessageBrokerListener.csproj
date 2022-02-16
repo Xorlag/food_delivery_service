@@ -9,7 +9,8 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Mappers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
+    <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
+    <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.MessageHandling\FoodDeliveryService.MessageHandling.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj" />
     <ProjectReference Include="..\OrderService.DataAccess\OrderService.DataAccess.csproj" />
     <ProjectReference Include="..\OrderService.Proxy\OrderService.Proxy.csproj" />

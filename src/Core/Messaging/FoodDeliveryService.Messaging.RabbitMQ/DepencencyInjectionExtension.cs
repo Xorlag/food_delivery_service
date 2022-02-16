@@ -6,7 +6,7 @@ namespace FoodDeliveryService.Messaging.RabbitMQ
 {
     public static class DepencencyInjectionExtension
     {
-        public static void RegisterRabbitMQDependencies(this IServiceCollection services)
+        public static void UseRabbitMQClientFactory(this IServiceCollection services)
         {
             services.AddSingleton<IConnectionFactory, ConnectionFactory>();
             services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();

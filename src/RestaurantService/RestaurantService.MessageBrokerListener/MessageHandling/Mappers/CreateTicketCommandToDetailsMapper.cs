@@ -3,7 +3,7 @@ using RestaurantService.Domain.Entities;
 using RestaurantService.Messages;
 using System.Linq;
 
-namespace RestaurantService.MessageBrokerListener.Mappers
+namespace RestaurantService.MessageBrokerListener.MessageHandling.Mappers
 {
     public class CreateTicketCommandToDetailsMapper : IMapper<CreateTicketCommand, TicketDetails>
     {
@@ -16,7 +16,7 @@ namespace RestaurantService.MessageBrokerListener.Mappers
                 RestaurantId = detailsDto.RestaurantId,
                 TicketLineItems = detailsDto.TicketLineItems.Select(tliDto => new TicketLineItem
                 {
-                    TicketId = tliDto.TicketId,
+                    OrderId = tliDto.OrderId,
                     MenuLineItemId = tliDto.MenuLineItemId,
                     Quantity = tliDto.Quantity
                 })

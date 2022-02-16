@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc.Versioning;
 using FoodDeliveryService.APIGateway.Configuration;
-using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests;
-using FoodDeliveryService.APIGateway.InboundAdapters.Mappers;
 using FoodDeliveryService.Messaging.RabbitMQ;
-using OrderService.Messages;
 using FoodDeliveryService.Mappers;
 using OrderService.Proxy;
 using OrderService.DTO;
+using FoodDeliveryService.APIGateway.DTO.Requests;
+using FoodDeliveryService.APIGateway.Mappers;
+using RestaurantService.Proxy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,11 +52,13 @@ static void SetupApiGatewayConfiguration(IConfiguration configuration, IServiceC
 {
     var configurationInstance = new ApiGatewayConfiguration(configuration);
     services.AddSingleton<IOrderServiceProxyConfiguration>(configurationInstance);
+    services.AddSingleton<IRestaurantServiceProxyConfiguration>(configurationInstance);
 }
 
 static void ConfigureDependencyInjection(IServiceCollection services)
 {
     services.AddSingleton<OrderServiceProxy>();
+    services.AddSingleton<RestaurantServiceProxy>();
     services.AddSingleton<IMapper<CreateOrderRequest, OrderDetailsDTO>, CreateOrderRequestToCommandMapper>();
-    services.RegisterRabbitMQDependencies();
+    services.UseRabbitMQClientFactory();
 }

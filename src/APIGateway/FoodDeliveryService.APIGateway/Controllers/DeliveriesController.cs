@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FoodDeliveryService.APIGateway.InboundAdapters.Controllers
+namespace FoodDeliveryService.APIGateway.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestaurantsController : ControllerBase
+    public class DeliveriesController : ControllerBase
     {
     }
 }

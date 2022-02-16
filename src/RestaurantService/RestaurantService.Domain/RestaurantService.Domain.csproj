@@ -8,7 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\DataAccess\FoodDeliveryService.DataAccess\FoodDeliveryService.DataAccess.csproj" />
-    <ProjectReference Include="..\..\Core\Services\FoodDeliveryService.Services\FoodDeliveryService.Services.csproj" />
+    <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.Services\FoodDeliveryService.Services.csproj" />
+    <ProjectReference Include="..\..\OrderService\OrderService.Proxy\OrderService.Proxy.csproj" />
   </ItemGroup>
 
 </Project>

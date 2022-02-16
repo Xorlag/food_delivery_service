@@ -1,4 +1,4 @@
-﻿namespace FoodDeliveryService.APIGateway.InboundAdapters.DTO.Entities
+﻿namespace FoodDeliveryService.APIGateway.DTO.Entities
 {
     public class DeliveryInfoDTO
     {

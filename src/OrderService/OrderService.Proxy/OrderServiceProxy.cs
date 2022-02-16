@@ -24,10 +24,24 @@ namespace OrderService.Proxy
             {
                 OrderDetails = orderDetails
             };
+            await SendMessageAsync(orderDetails.OrderId, command, OrderServiceMessageEnvelopeTypes.CreateOrderCommand);
+        }
+
+        public async Task NotifyOrderAccepted(Guid orderId)
+        {
+            var command = new TicketAcceptedEvent
+            {
+                OrderId = orderId
+            };
+            await SendMessageAsync(orderId, command, OrderServiceMessageEnvelopeTypes.TicketAcceptedEvent);
+        }
+
+        private async Task SendMessageAsync(Guid messageId, object command, string messageEnvelopType)
+        {
             var serializedCommand = JsonSerializer.Serialize(command);
-            var messageEnvelope = new MessageEnvelope(messageId: orderDetails.OrderId,
+            var messageEnvelope = new MessageEnvelope(messageId: messageId,
                 message: serializedCommand,
-                type: OrderServiceMessageEnvelopeTypes.CreateOrderCommand);
+                type: messageEnvelopType);
 
             var messageBrokerClient = _messageBrokerClientFactory.CreateClient(new MessageBrokerClientOptions
             {
@@ -35,7 +49,6 @@ namespace OrderService.Proxy
                 QueueName = _configuration.OrderServiceMessageBrokerQueueName
             });
             await messageBrokerClient.SendMessageAsync(messageEnvelope);
-
         }
     }
 }

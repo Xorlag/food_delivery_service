@@ -31,7 +31,7 @@ namespace OrderService.Domain.Services
                     {
                         MenuLineItemId = oli.MenuLineItemId,
                         Quantity = oli.Quantity,
-                        TicketId = oli.OrderId
+                        OrderId = oli.OrderId
                     })
                 });
                 return new ServiceOperationResult(ServiceOperationResultStatus.Success);

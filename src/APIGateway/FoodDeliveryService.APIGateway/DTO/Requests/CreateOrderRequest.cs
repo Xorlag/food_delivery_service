@@ -1,6 +1,6 @@
-﻿using FoodDeliveryService.APIGateway.InboundAdapters.DTO.Entities;
+﻿using FoodDeliveryService.APIGateway.DTO.Entities;
 
-namespace FoodDeliveryService.APIGateway.InboundAdapters.DTO.Requests
+namespace FoodDeliveryService.APIGateway.DTO.Requests
 {
     public class CreateOrderRequest
     {

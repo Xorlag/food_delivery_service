@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj" />
-    <ProjectReference Include="..\OrderService.DTO\OrderService.DTO.csproj" />
     <ProjectReference Include="..\OrderService.Messages\OrderService.Messages.csproj" />
   </ItemGroup>
 

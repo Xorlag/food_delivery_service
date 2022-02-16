@@ -37,5 +37,22 @@ namespace RestaurantService.Proxy
             await messageBrockerClient.SendMessageAsync(messageEnvelope);
         }
 
+        public async Task AcceptTicket(Guid orderId)
+        {
+            var acceptTicketCommand = new AcceptTicketCommand { OrderId = orderId };
+            var serializedCommand = JsonSerializer.Serialize(acceptTicketCommand);
+            var messageEnvelope = new MessageEnvelope(acceptTicketCommand.OrderId,
+                serializedCommand,
+                RestaurantServiceMessageEnvelopeTypes.AcceptTicketCommand);
+
+            var messageBrockerClient = _messageBrokerClientFactory.CreateClient(new MessageBrokerClientOptions
+            {
+                ConnectionString = _configuration.RestaurantServiceMessageBrokerConnectionString,
+                QueueName = _configuration.RestaurantServiceMessageBrokerQueueName
+            });
+
+            await messageBrockerClient.SendMessageAsync(messageEnvelope);
+        }
+
     }
 }

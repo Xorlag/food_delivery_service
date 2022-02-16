@@ -17,9 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Mappers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
+    <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\OrderService\OrderService.Proxy\OrderService.Proxy.csproj" />
+    <ProjectReference Include="..\..\RestaurantService\RestaurantService.Proxy\RestaurantService.Proxy.csproj" />
   </ItemGroup>
 
 </Project>
