@@ -9,6 +9,8 @@ using FoodDeliveryService.Messaging.RabbitMQ;
 using RestaurantService.MessageBrokerListener.Configuration;
 using RestaurantService.Domain.Repositories;
 using RestaurantService.DataAccess;
+using RestaurantService.MessageBrokerListener.MessageHandling;
+using OrderService.Proxy;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace RestaurantService.MessageBrokerListener
@@ -28,13 +30,28 @@ namespace RestaurantService.MessageBrokerListener
                 {
                     configuration.GetSection("DbConnectionStrings").Bind(settings);
                 });
+            services.AddOptions<OrderServiceConfiguration>()
+                .Configure<IConfiguration>((settings, configuration) =>
+                {
+                    configuration.GetSection("OrderServiceProxy").Bind(settings);
+                });
         }
 
         private void ConfigureDependencyInjection(IServiceCollection services)
         {
             services.AddSingleton<RestaurantService.Domain.Services.RestaurantService>();
+            services.AddSingleton<OrderServiceProxy>();
             services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();
             services.AddSingleton<IRestaurantServiceRepository, RestaurantServiceRepository>();
+            services.AddSingleton<MessageHandlerFactory>();
+
+            services.UseRabbitMQClientFactory();
+
+            services.AddSingleton<IOrderServiceProxyConfiguration>(serviceProvider =>
+            {
+                var restaurantServiceProxyConfiguration = serviceProvider.GetService<IOptions<OrderServiceConfiguration>>();
+                return restaurantServiceProxyConfiguration.Value;
+            });
 
             services.RegisterDbConnectionFactory<RestaurantServiceRepository>(serviceProvider =>
             {

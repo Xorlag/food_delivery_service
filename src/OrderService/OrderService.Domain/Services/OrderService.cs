@@ -54,5 +54,10 @@ namespace OrderService.Domain.Services
                 return new ServiceOperationResult<Order>(ServiceOperationResultStatus.Failure, ex.Message);
             }
         }
+
+        public async Task NoteTicketAccepted(Guid orderId)
+        {
+
+        }
     }
 }

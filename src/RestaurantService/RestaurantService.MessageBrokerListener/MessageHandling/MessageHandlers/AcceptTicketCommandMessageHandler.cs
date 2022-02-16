@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.Messaging;
-using RestaurantService.MessageBrokerListener.MessageHandling.Mappers;
 using RestaurantService.Messages;
 
 namespace RestaurantService.MessageBrokerListener.MessageHandling.MessageHandlers

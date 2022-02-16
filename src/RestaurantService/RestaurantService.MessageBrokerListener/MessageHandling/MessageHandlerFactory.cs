@@ -1,4 +1,5 @@
-﻿using FoodDeliveryService.MessageHandling.Exceptions;
+﻿using FoodDeliveryService.MessageHandling;
+using FoodDeliveryService.MessageHandling.Exceptions;
 using RestaurantService.MessageBrokerListener.MessageHandling.MessageHandlers;
 using RestaurantService.Messages;
 

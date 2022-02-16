@@ -13,6 +13,7 @@ using OrderService.Domain.Entities;
 using OrderService.Messages;
 using OrderService.MessageBrokerListener.Mappers;
 using RestaurantService.Proxy;
+using OrderService.MessageBrokerListener.MessageHandling;
 
 [assembly: FunctionsStartup(typeof(OrderService.MessageBrokerListener.Startup))]
 namespace OrderService.MessageBrokerListener
@@ -45,7 +46,7 @@ namespace OrderService.MessageBrokerListener
             services.AddSingleton<RestaurantServiceProxy>();
             services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();
             services.AddSingleton<IOrderServiceRepository, OrderServiceRepository>();
-            services.AddSingleton<IMapper<CreateOrderCommand, OrderDetails>, CreateOrderRequestToCommandMapper>();
+            services.AddSingleton<MessageHandlerFactory>();
             services.AddSingleton<IRestaurantServiceProxyConfiguration>(serviceProvider =>
             {
                 var restaurantServiceProxyConfiguration = serviceProvider.GetService<IOptions<RestaurantServiceConfiguration>>();

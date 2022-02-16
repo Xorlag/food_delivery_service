@@ -1,15 +1,15 @@
-﻿using FoodDeliveryService.MessageHandling.Exceptions;
-using OrderService.MessageBrokerListener.MessageHandling;
+﻿using FoodDeliveryService.MessageHandling;
+using FoodDeliveryService.MessageHandling.Exceptions;
 using OrderService.MessageBrokerListener.MessageHandling.MessageHandlers;
 using OrderService.MessageEnvelopeTypes;
 
-namespace RestaurantService.MessageBrokerListener.MessageHandling
+namespace OrderService.MessageBrokerListener.MessageHandling
 {
     public class MessageHandlerFactory
     {
-        private readonly OrderService.Domain.Services.OrderService _orderService;
+        private readonly Domain.Services.OrderService _orderService;
 
-        public MessageHandlerFactory(OrderService.Domain.Services.OrderService orderService)
+        public MessageHandlerFactory(Domain.Services.OrderService orderService)
         {
             _orderService = orderService;
         }
@@ -20,7 +20,11 @@ namespace RestaurantService.MessageBrokerListener.MessageHandling
             {
                 case OrderServiceMessageEnvelopeTypes.CreateOrderCommand:
                     {
-                        return new CreateOrderCommandMessageHandler();
+                        return new CreateOrderCommandMessageHandler(_orderService);
+                    }
+                case OrderServiceMessageEnvelopeTypes.TicketAcceptedEvent:
+                    {
+                        return new TicketAcceptedEventMessageHandler(_orderService);
                     }
                 default:
                     {

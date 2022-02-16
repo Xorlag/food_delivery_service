@@ -1,17 +1,22 @@
-﻿using FoodDeliveryService.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using FoodDeliveryService.MessageHandling;
+using FoodDeliveryService.Messaging;
+using OrderService.Messages;
 
 namespace OrderService.MessageBrokerListener.MessageHandling.MessageHandlers
 {
     internal class TicketAcceptedEventMessageHandler : IMessageHandler
     {
-        public Task HandleMessage(MessageEnvelope messageEnvelope)
+        private readonly Domain.Services.OrderService _orderService;
+
+        public TicketAcceptedEventMessageHandler(OrderService.Domain.Services.OrderService orderService)
         {
-            throw new NotImplementedException();
+            _orderService = orderService;
+        }
+        public async Task HandleMessage(MessageEnvelope messageEnvelope)
+        {
+            var ticketAcceptedEvent = messageEnvelope.Unwrap<TicketAcceptedEvent>();
+            await _orderService.NoteTicketAccepted(ticketAcceptedEvent.OrderId);
         }
     }
 }

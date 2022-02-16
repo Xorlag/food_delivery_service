@@ -4,7 +4,8 @@ using RestaurantService.Proxy;
 
 namespace FoodDeliveryService.APIGateway.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class RestaurantsController : ControllerBase
     {

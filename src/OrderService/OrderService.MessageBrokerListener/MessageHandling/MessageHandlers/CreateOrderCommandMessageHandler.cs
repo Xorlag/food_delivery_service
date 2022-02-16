@@ -1,17 +1,25 @@
-﻿using FoodDeliveryService.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using FoodDeliveryService.MessageHandling;
+using FoodDeliveryService.Messaging;
+using OrderService.MessageBrokerListener.Mappers;
+using OrderService.Messages;
 
 namespace OrderService.MessageBrokerListener.MessageHandling.MessageHandlers
 {
     internal class CreateOrderCommandMessageHandler : IMessageHandler
     {
-        public Task HandleMessage(MessageEnvelope messageEnvelope)
+        private readonly Domain.Services.OrderService _orderService;
+
+        public CreateOrderCommandMessageHandler(OrderService.Domain.Services.OrderService orderService)
         {
-            throw new NotImplementedException();
+            _orderService = orderService;
+        }
+        public async Task HandleMessage(MessageEnvelope messageEnvelope)
+        {
+            var createOrderCommand = messageEnvelope.Unwrap<CreateOrderCommand>();
+            var createOrderCommandToDetailsMapper = new CreateOrderRequestToCommandMapper();
+            var orderDetails = createOrderCommandToDetailsMapper.Map(createOrderCommand);
+            await _orderService.CreateOrder(orderDetails);
         }
     }
 }

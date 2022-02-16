@@ -65,7 +65,7 @@ namespace RestaurantService.DataAccess
             try
             {
                 using IDbConnection sqlConnection = _dbConnectionFactory.CreateConnection();
-                var updateTicketStatusSql = @"UPDATE Ticket
+                var updateTicketStatusSql = @"UPDATE Tickets
                                      SET TicketStatus = @ticketStatus                                
                                      WHERE OrderId = @orderId";
                 await sqlConnection.ExecuteAsync(updateTicketStatusSql, new

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using FoodDeliveryService.Messaging;
 
-namespace OrderService.MessageBrokerListener.MessageHandling
+namespace FoodDeliveryService.MessageHandling
 {
     public interface IMessageHandler
     {
