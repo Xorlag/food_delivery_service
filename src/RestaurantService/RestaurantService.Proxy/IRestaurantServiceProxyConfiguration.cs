@@ -8,7 +8,7 @@ namespace RestaurantService.Proxy
 {
     public interface IRestaurantServiceProxyConfiguration
     {
-        public string RestaurantServiceMessageBrokerConnectionString { get; set; }
-        public string RestaurantServiceMessageBrokerQueueName { get; set; }
+        public string RestaurantServiceMessageBrokerConnectionString { get; }
+        public string RestaurantServiceMessageBrokerQueueName { get; }
     }
 }

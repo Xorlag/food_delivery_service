@@ -2,15 +2,19 @@
 using OrderService.Domain.Entities;
 using OrderService.Domain.Models.Entities;
 using OrderService.Domain.Repository;
+using RestaurantService.DTO;
+using RestaurantService.Proxy;
 
 namespace OrderService.Domain.Services
 {
     public class OrderService
     {
+        private readonly RestaurantServiceProxy _restaurantServiceProxy;
         private readonly IOrderServiceRepository _repository;
 
-        public OrderService(IOrderServiceRepository repository)
+        public OrderService(RestaurantServiceProxy restaurantServiceProxy, IOrderServiceRepository repository)
         {
+            _restaurantServiceProxy = restaurantServiceProxy;
             _repository = repository;
         }
 
@@ -19,6 +23,17 @@ namespace OrderService.Domain.Services
             var dataOperationResult = await _repository.CreateOrderAsync(orderDetails);
             if (dataOperationResult.IsSuccess)
             {
+                await _restaurantServiceProxy.CreateTicket(new TicketDetailsDTO
+                {
+                    OrderId = orderDetails.OrderId,
+                    RestaurantId = orderDetails.RestaurantId,
+                    TicketLineItems = orderDetails.OrderLineItems.Select(oli => new TicketLineItemDTO
+                    {
+                        MenuLineItemId = oli.MenuLineItemId,
+                        Quantity = oli.Quantity,
+                        TicketId = oli.OrderId
+                    })
+                });
                 return new ServiceOperationResult(ServiceOperationResultStatus.Success);
             }
             else
