@@ -17,6 +17,7 @@ namespace OrderService.Proxy
             _messageBrokerClientFactory = messageBrokerClientFactory;
             _configuration = configuration;
         }
+
         public async Task CreateOrder(OrderDetailsDTO orderDetails)
         {
             var command = new CreateOrderCommand

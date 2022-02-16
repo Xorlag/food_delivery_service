@@ -1,9 +1,8 @@
-using System;
 using System.Threading.Tasks;
-using FoodDeliveryService.Messaging;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
+using FoodDeliveryService.Messaging;
+using RestaurantService.MessageBrokerListener.Mappers;
 using RestaurantService.Messages;
 
 namespace RestaurantService.MessageBrokerListener
@@ -29,6 +28,8 @@ namespace RestaurantService.MessageBrokerListener
                 case RestaurantServiceMessageEnvelopeTypes.CreateTicketCommand:
                     {
                         var createTicketCommand = messageEnvelope.Unwrap<CreateTicketCommand>();
+                        var mapper = new CreateTicketCommandToDetailsMapper();
+                        await _restaurantService.CreateTicket(mapper.Map(createTicketCommand));
                         break;
                     }
             }
