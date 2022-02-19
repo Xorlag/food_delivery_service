@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.Messaging;
-using RestaurantService.Messages;
+using RestaurantService.DTO.Messages;
 
 namespace RestaurantService.MessageBrokerListener.MessageHandling.MessageHandlers
 {

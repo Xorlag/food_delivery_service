@@ -1,6 +1,6 @@
 ﻿using FoodDeliveryService.APIGateway.DTO.Requests;
 using FoodDeliveryService.Mappers;
-using OrderService.DTO;
+using OrderService.DTO.Entities;
 
 namespace FoodDeliveryService.APIGateway.Mappers
 {

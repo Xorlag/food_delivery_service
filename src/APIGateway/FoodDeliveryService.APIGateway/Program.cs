@@ -7,6 +7,7 @@ using OrderService.DTO;
 using FoodDeliveryService.APIGateway.DTO.Requests;
 using FoodDeliveryService.APIGateway.Mappers;
 using RestaurantService.Proxy;
+using OrderService.DTO.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-﻿namespace OrderService.DTO
+﻿namespace OrderService.DTO.Entities
 {
     public class DeliveryInfoDTO
     {

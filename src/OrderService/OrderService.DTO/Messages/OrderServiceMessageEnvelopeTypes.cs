@@ -1,4 +1,4 @@
-﻿namespace OrderService.MessageEnvelopeTypes
+﻿namespace OrderService.DTO.Messages
 {
     public class OrderServiceMessageEnvelopeTypes
     {

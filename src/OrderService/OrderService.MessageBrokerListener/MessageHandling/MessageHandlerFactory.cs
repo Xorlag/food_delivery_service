@@ -1,7 +1,7 @@
 ﻿using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.MessageHandling.Exceptions;
+using OrderService.DTO.Messages;
 using OrderService.MessageBrokerListener.MessageHandling.MessageHandlers;
-using OrderService.MessageEnvelopeTypes;
 
 namespace OrderService.MessageBrokerListener.MessageHandling
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FoodDeliveryService.Mappers;
 using OrderService.Proxy;
-using OrderService.DTO;
+using OrderService.DTO.Entities;
 using FoodDeliveryService.APIGateway.DTO.Requests;
 
 namespace FoodDeliveryService.APIGateway.Controllers

@@ -3,6 +3,7 @@ using OrderService.Domain.Entities;
 using OrderService.Domain.Models.Entities;
 using OrderService.Domain.Repository;
 using RestaurantService.DTO;
+using RestaurantService.DTO.Entities;
 using RestaurantService.Proxy;
 
 namespace OrderService.Domain.Services

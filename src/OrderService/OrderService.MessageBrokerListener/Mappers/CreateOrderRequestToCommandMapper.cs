@@ -1,7 +1,7 @@
 ﻿using FoodDeliveryService.Mappers;
 using OrderService.Domain.Entities;
 using OrderService.Domain.Models.Entities;
-using OrderService.Messages;
+using OrderService.DTO.Messages;
 using System.Linq;
 
 namespace OrderService.MessageBrokerListener.Mappers

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using FoodDeliveryService.Messaging;
-using RestaurantService.DTO;
-using RestaurantService.Messages;
+using RestaurantService.DTO.Entities;
+using RestaurantService.DTO.Messages;
 
 namespace RestaurantService.Proxy
 {

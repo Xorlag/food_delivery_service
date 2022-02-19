@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj" />
-    <ProjectReference Include="..\RestaurantService.Messages\RestaurantService.Messages.csproj" />
+    <ProjectReference Include="..\RestaurantService.DTO\RestaurantService.DTO.csproj" />
   </ItemGroup>
 
 </Project>

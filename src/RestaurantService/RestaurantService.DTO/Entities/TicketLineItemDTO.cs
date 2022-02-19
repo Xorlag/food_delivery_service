@@ -1,4 +1,4 @@
-﻿namespace RestaurantService.DTO
+﻿namespace RestaurantService.DTO.Entities
 {
     public class TicketLineItemDTO
     {

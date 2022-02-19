@@ -1,6 +1,6 @@
-﻿using RestaurantService.DTO;
+﻿using RestaurantService.DTO.Entities;
 
-namespace RestaurantService.Messages
+namespace RestaurantService.DTO.Messages
 {
     public class CreateTicketCommand
     {

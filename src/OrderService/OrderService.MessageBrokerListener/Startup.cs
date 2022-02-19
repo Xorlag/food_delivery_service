@@ -8,10 +8,6 @@ using OrderService.Domain.Repository;
 using OrderService.MessageBrokerListener.Configuration;
 using FoodDeliveryService.DataAccess.Sql.DependencyInjection;
 using FoodDeliveryService.Messaging.RabbitMQ;
-using FoodDeliveryService.Mappers;
-using OrderService.Domain.Entities;
-using OrderService.Messages;
-using OrderService.MessageBrokerListener.Mappers;
 using RestaurantService.Proxy;
 using OrderService.MessageBrokerListener.MessageHandling;
 

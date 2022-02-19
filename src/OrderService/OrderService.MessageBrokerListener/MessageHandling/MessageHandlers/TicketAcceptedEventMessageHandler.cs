@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.Messaging;
-using OrderService.Messages;
+using OrderService.DTO.Messages;
 
 namespace OrderService.MessageBrokerListener.MessageHandling.MessageHandlers
 {

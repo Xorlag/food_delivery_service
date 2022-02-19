@@ -1,8 +1,7 @@
 ﻿using System.Text.Json;
 using FoodDeliveryService.Messaging;
-using OrderService.DTO;
-using OrderService.MessageEnvelopeTypes;
-using OrderService.Messages;
+using OrderService.DTO.Entities;
+using OrderService.DTO.Messages;
 
 namespace OrderService.Proxy
 {

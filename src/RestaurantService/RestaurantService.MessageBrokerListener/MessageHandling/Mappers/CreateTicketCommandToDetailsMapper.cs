@@ -1,6 +1,6 @@
 ﻿using FoodDeliveryService.Mappers;
 using RestaurantService.Domain.Entities;
-using RestaurantService.Messages;
+using RestaurantService.DTO.Messages;
 using System.Linq;
 
 namespace RestaurantService.MessageBrokerListener.MessageHandling.Mappers
