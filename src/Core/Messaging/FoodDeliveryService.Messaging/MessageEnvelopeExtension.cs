@@ -4,9 +4,9 @@ namespace FoodDeliveryService.Messaging
 {
     public static class MessageEnvelopeExtension
     {
-        public static T? Unwrap<T>(this MessageEnvelope messageEnvelope)
+        public static TPayload? Unwrap<TPayload>(this MessageEnvelope messageEnvelope)
         {
-            var messageObject = JsonSerializer.Deserialize<T>(messageEnvelope.Message);
+            var messageObject = JsonSerializer.Deserialize<TPayload>(messageEnvelope.Message);
             return messageObject;
         }
     }

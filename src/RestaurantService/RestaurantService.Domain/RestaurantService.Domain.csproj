@@ -12,4 +12,8 @@
     <ProjectReference Include="..\..\OrderService\OrderService.Proxy\OrderService.Proxy.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DomainEvents\" />
+  </ItemGroup>
+
 </Project>

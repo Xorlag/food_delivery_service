@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using FoodDeliveryService.Messaging.AzureServiceBus;
 
-namespace FoodDeliveryService.Messaging.RabbitMQ
+namespace FoodDeliveryService.Messaging.AzureServiceBus
 {
     public static class DepencencyInjectionExtension
     {
-        public static void RegisterAzureServiceBusDependencies(this IServiceCollection services)
+        public static void RegisterAzureServiceBusDependencies<TService>(this IServiceCollection services)
         {
-            services.AddSingleton<IMessageBrokerClientFactory, AzureServiceBusClientFactory>();
+            services.AddSingleton<IMessageBrokerClientFactory<TService>, AzureServiceBusClientFactory<TService>>();
         }
     }
 }

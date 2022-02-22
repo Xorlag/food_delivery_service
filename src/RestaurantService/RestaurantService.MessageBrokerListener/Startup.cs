@@ -11,6 +11,7 @@ using RestaurantService.Domain.Repositories;
 using RestaurantService.DataAccess;
 using RestaurantService.MessageBrokerListener.MessageHandling;
 using OrderService.Proxy;
+using OrderService.Proxy.ProxyImplementations;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace RestaurantService.MessageBrokerListener
@@ -25,38 +26,34 @@ namespace RestaurantService.MessageBrokerListener
 
         private void SetupConfiguration(IServiceCollection services)
         {
-            services.AddOptions<DbConnectionStringsConfiguration>()
+            services.AddOptions<RestaurantServiceConfiguration>()
                 .Configure<IConfiguration>((settings, configuration) =>
                 {
-                    configuration.GetSection("DbConnectionStrings").Bind(settings);
-                });
-            services.AddOptions<OrderServiceConfiguration>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                {
-                    configuration.GetSection("OrderServiceProxy").Bind(settings);
+                    configuration.GetSection("RestaurantService").Bind(settings);
                 });
         }
 
         private void ConfigureDependencyInjection(IServiceCollection services)
         {
             services.AddSingleton<RestaurantService.Domain.Services.RestaurantService>();
-            services.AddSingleton<OrderServiceProxy>();
-            services.AddSingleton<IMessageBrokerClientFactory, RabbitMQClientFactory>();
+            services.AddSingleton<IOrderServiceProxy, OrderServiceProxyAsync>();
             services.AddSingleton<IRestaurantServiceRepository, RestaurantServiceRepository>();
             services.AddSingleton<MessageHandlerFactory>();
 
-            services.UseRabbitMQClientFactory();
-
-            services.AddSingleton<IOrderServiceProxyConfiguration>(serviceProvider =>
+            services.UseRabbitMQClientFactory<IOrderServiceProxy>(sp =>
             {
-                var restaurantServiceProxyConfiguration = serviceProvider.GetService<IOptions<OrderServiceConfiguration>>();
-                return restaurantServiceProxyConfiguration.Value;
+                var configuration = sp.GetService<IOptions<RestaurantServiceConfiguration>>().Value.OrderServiceProxy;
+                return new RabbitMQClientOptions
+                {
+                    ConnectionString = configuration.MessageBrokerConnectionString,
+                    QueueName = configuration.MessageBrokerQueueName
+                };
             });
 
             services.RegisterDbConnectionFactory<RestaurantServiceRepository>(serviceProvider =>
             {
-                var dbConnectionStringsConfiguration = serviceProvider.GetService<IOptions<DbConnectionStringsConfiguration>>();
-                return dbConnectionStringsConfiguration.Value.RestaurantService_DatabaseConnectionString;
+                var dbConnectionStringsConfiguration = serviceProvider.GetRequiredService<IOptions<RestaurantServiceConfiguration>>().Value;
+                return dbConnectionStringsConfiguration.DatabaseConnectionString;
             });
         }
     }

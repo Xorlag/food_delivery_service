@@ -11,7 +11,7 @@ namespace FoodDeliveryService.APIGateway.Controllers
     {
         [HttpPost("tickets/{orderId}/accept")]
         public async Task<IActionResult> AcceptTicket(Guid orderId,
-            [FromServices] RestaurantServiceProxy restaurantServiceProxy)
+            [FromServices] IRestaurantServiceProxy restaurantServiceProxy)
         {
             await restaurantServiceProxy.AcceptTicket(orderId);
             return Ok();

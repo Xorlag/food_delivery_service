@@ -1,20 +1,22 @@
-﻿using System.Text.Json;
-using FoodDeliveryService.Messaging;
+﻿using FoodDeliveryService.Messaging;
 using OrderService.DTO.Entities;
 using OrderService.DTO.Messages;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
-namespace OrderService.Proxy
+namespace OrderService.Proxy.ProxyImplementations
 {
-    public class OrderServiceProxy
+    public class OrderServiceProxyAsync : IOrderServiceProxy
     {
-        private readonly IMessageBrokerClientFactory _messageBrokerClientFactory;
-        private readonly IOrderServiceProxyConfiguration _configuration;
+        private readonly IMessageBrokerClientFactory<IOrderServiceProxy> _messageBrokerClientFactory;
 
-        public OrderServiceProxy(IMessageBrokerClientFactory messageBrokerClientFactory,
-            IOrderServiceProxyConfiguration configuration)
+        public OrderServiceProxyAsync(IMessageBrokerClientFactory<IOrderServiceProxy> messageBrokerClientFactory)
         {
             _messageBrokerClientFactory = messageBrokerClientFactory;
-            _configuration = configuration;
         }
 
         public async Task CreateOrder(OrderDetailsDTO orderDetails)
@@ -42,11 +44,7 @@ namespace OrderService.Proxy
                 message: serializedCommand,
                 type: messageEnvelopType);
 
-            var messageBrokerClient = _messageBrokerClientFactory.CreateClient(new MessageBrokerClientOptions
-            {
-                ConnectionString = _configuration.OrderServiceMessageBrokerConnectionString,
-                QueueName = _configuration.OrderServiceMessageBrokerQueueName
-            });
+            var messageBrokerClient = _messageBrokerClientFactory.CreateClient();
             await messageBrokerClient.SendMessageAsync(messageEnvelope);
         }
     }

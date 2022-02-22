@@ -13,7 +13,7 @@ namespace FoodDeliveryService.APIGateway.Controllers
     {
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest createOrderRequest,
-            [FromServices] OrderServiceProxy orderServiceProxy,
+            [FromServices] IOrderServiceProxy orderServiceProxy,
             [FromServices] IMapper<CreateOrderRequest, OrderDetailsDTO> orderServiceRequestToCommandMapper)
         {
             var orderDetailsDTO = orderServiceRequestToCommandMapper.Map(createOrderRequest);

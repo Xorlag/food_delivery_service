@@ -1,7 +1,7 @@
 ﻿namespace FoodDeliveryService.Messaging
 {
-    public interface IMessageBrokerClientFactory
+    public interface IMessageBrokerClientFactory<T>
     {
-        IMessageBrokerClient CreateClient(MessageBrokerClientOptions options);
+        IMessageBrokerClient<T> CreateClient();
     }
 }

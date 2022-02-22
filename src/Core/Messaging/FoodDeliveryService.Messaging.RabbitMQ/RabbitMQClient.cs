@@ -1,16 +1,15 @@
 ﻿using System.Text;
 using System.Text.Json;
 using RabbitMQ.Client;
-using FoodDeliveryService.Messaging;
 
 namespace FoodDeliveryService.Messaging.RabbitMQ
 {
-    public class RabbitMQClient : IMessageBrokerClient
+    public class RabbitMQClient<T> : IMessageBrokerClient<T>
     {
         private readonly IConnectionFactory _connectionFactory;
-        private readonly MessageBrokerClientOptions _options;
+        private readonly RabbitMQClientOptions _options;
 
-        public RabbitMQClient(IConnectionFactory connectionFactory, MessageBrokerClientOptions options)
+        public RabbitMQClient(IConnectionFactory connectionFactory, RabbitMQClientOptions options)
         {
             _connectionFactory = connectionFactory;
             _options = options;

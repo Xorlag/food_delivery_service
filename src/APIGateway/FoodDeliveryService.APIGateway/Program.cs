@@ -8,6 +8,9 @@ using FoodDeliveryService.APIGateway.DTO.Requests;
 using FoodDeliveryService.APIGateway.Mappers;
 using RestaurantService.Proxy;
 using OrderService.DTO.Entities;
+using Microsoft.Extensions.Options;
+using OrderService.Proxy.ProxyImplementations;
+using RestaurantService.Proxy.ProxyImplementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,15 +54,36 @@ app.Run();
 
 static void SetupApiGatewayConfiguration(IConfiguration configuration, IServiceCollection services)
 {
-    var configurationInstance = new ApiGatewayConfiguration(configuration);
-    services.AddSingleton<IOrderServiceProxyConfiguration>(configurationInstance);
-    services.AddSingleton<IRestaurantServiceProxyConfiguration>(configurationInstance);
+    services.AddOptions<ApiGatewayConfiguration>()
+                .Configure<IConfiguration>((settings, configuration) =>
+                {
+                    configuration.GetSection("ApiGateway").Bind(settings);
+                });
 }
 
 static void ConfigureDependencyInjection(IServiceCollection services)
 {
-    services.AddSingleton<OrderServiceProxy>();
-    services.AddSingleton<RestaurantServiceProxy>();
+    services.AddSingleton<IOrderServiceProxy, OrderServiceProxyAsync>();
+    services.AddSingleton<IRestaurantServiceProxy, RestaurantServiceProxyAsync>();
     services.AddSingleton<IMapper<CreateOrderRequest, OrderDetailsDTO>, CreateOrderRequestToCommandMapper>();
-    services.UseRabbitMQClientFactory();
+    services.UseRabbitMQClientFactory<IOrderServiceProxy>(sp =>
+    {
+        var configurationOptions = sp.GetRequiredService<IOptions<ApiGatewayConfiguration>>();
+        var configuration = configurationOptions.Value.OrderServiceProxy;
+        return new RabbitMQClientOptions
+        {
+            ConnectionString = configuration.MessageBrokerConnectionString,
+            QueueName = configuration.MessageBrokerQueueName,
+        };
+    });
+    services.UseRabbitMQClientFactory<IRestaurantServiceProxy>(sp =>
+    {
+        var configurationOptions = sp.GetRequiredService<IOptions<ApiGatewayConfiguration>>();
+        var configuration = configurationOptions.Value.RestaurantServiceProxy;
+        return new RabbitMQClientOptions
+        {
+            ConnectionString = configuration.MessageBrokerConnectionString,
+            QueueName = configuration.MessageBrokerQueueName,
+        };
+    });
 }

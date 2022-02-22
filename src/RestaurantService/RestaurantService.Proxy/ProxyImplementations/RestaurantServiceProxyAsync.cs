@@ -3,18 +3,15 @@ using FoodDeliveryService.Messaging;
 using RestaurantService.DTO.Entities;
 using RestaurantService.DTO.Messages;
 
-namespace RestaurantService.Proxy
+namespace RestaurantService.Proxy.ProxyImplementations
 {
-    public class RestaurantServiceProxy
+    public class RestaurantServiceProxyAsync : IRestaurantServiceProxy
     {
-        private readonly IMessageBrokerClientFactory _messageBrokerClientFactory;
-        private readonly IRestaurantServiceProxyConfiguration _configuration;
+        private readonly IMessageBrokerClientFactory<IRestaurantServiceProxy> _messageBrokerClientFactory;
 
-        public RestaurantServiceProxy(IMessageBrokerClientFactory messageBrokerClientFactory,
-            IRestaurantServiceProxyConfiguration configuration)
+        public RestaurantServiceProxyAsync(IMessageBrokerClientFactory<IRestaurantServiceProxy> messageBrokerClientFactory)
         {
             _messageBrokerClientFactory = messageBrokerClientFactory;
-            _configuration = configuration;
         }
 
         public async Task CreateTicket(TicketDetailsDTO ticketDetails)
@@ -28,11 +25,7 @@ namespace RestaurantService.Proxy
                 serializedCommand,
                 RestaurantServiceMessageEnvelopeTypes.CreateTicketCommand);
 
-            var messageBrockerClient = _messageBrokerClientFactory.CreateClient(new MessageBrokerClientOptions
-            {
-                ConnectionString = _configuration.RestaurantServiceMessageBrokerConnectionString,
-                QueueName = _configuration.RestaurantServiceMessageBrokerQueueName
-            });
+            var messageBrockerClient = _messageBrokerClientFactory.CreateClient();
 
             await messageBrockerClient.SendMessageAsync(messageEnvelope);
         }
@@ -45,11 +38,7 @@ namespace RestaurantService.Proxy
                 serializedCommand,
                 RestaurantServiceMessageEnvelopeTypes.AcceptTicketCommand);
 
-            var messageBrockerClient = _messageBrokerClientFactory.CreateClient(new MessageBrokerClientOptions
-            {
-                ConnectionString = _configuration.RestaurantServiceMessageBrokerConnectionString,
-                QueueName = _configuration.RestaurantServiceMessageBrokerQueueName
-            });
+            var messageBrockerClient = _messageBrokerClientFactory.CreateClient();
 
             await messageBrockerClient.SendMessageAsync(messageEnvelope);
         }

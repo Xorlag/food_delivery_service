@@ -2,18 +2,20 @@
 
 namespace FoodDeliveryService.Messaging.RabbitMQ
 {
-    public class RabbitMQClientFactory : IMessageBrokerClientFactory
+    public class RabbitMQClientFactory<T> : IMessageBrokerClientFactory<T>
     {
-        private IConnectionFactory _connectionFactory;
+        private readonly IConnectionFactory _connectionFactory;
+        private readonly RabbitMQClientOptions _options;
 
-        public RabbitMQClientFactory(IConnectionFactory connectionFactory)
+        public RabbitMQClientFactory(IConnectionFactory connectionFactory, RabbitMQClientOptions options)
         {
             _connectionFactory = connectionFactory;
+            _options = options;
         }
 
-        public IMessageBrokerClient CreateClient(MessageBrokerClientOptions options)
+        public IMessageBrokerClient<T> CreateClient()
         {
-            return new RabbitMQClient(_connectionFactory, options);
+            return new RabbitMQClient<T>(_connectionFactory, _options);
         }
     }
 }

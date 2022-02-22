@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FoodDeliveryService.Messaging.AzureServiceBus
 {
-    internal class AzureServiceBusClientFactory : IMessageBrokerClientFactory
+    internal class AzureServiceBusClientFactory<T> : IMessageBrokerClientFactory<T>
     {
-        public IMessageBrokerClient CreateClient(MessageBrokerClientOptions options)
+        public IMessageBrokerClient<T> CreateClient()
         {
-            return new AzureServiceBusClient();
+            throw new NotImplementedException();
         }
     }
 }

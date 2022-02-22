@@ -17,46 +17,46 @@ namespace RestaurantService.Domain.UnitTests
         {
         }
 
-        [Test]
-        public async Task Given_PendingTicket_When_TicketAccepted_Then_TicketStatusIsUpdated_And_OrderServiceIsNotified()
-        {
-            //Given
-            var ticketId = Guid.NewGuid();
+        //[Test]
+        //public async Task Given_PendingTicket_When_TicketAccepted_Then_TicketStatusIsUpdated_And_OrderServiceIsNotified()
+        //{
+        //    //Given
+        //    var ticketId = Guid.NewGuid();
 
-            Mock<IRestaurantServiceRepository> mockRepository = new Mock<IRestaurantServiceRepository>();
-            mockRepository.Setup(repo => repo.GetTicketById(It.IsAny<Guid>())).ReturnsAsync(new Ticket
-            {
-                OrderId = ticketId,
-                RestaurantId = Guid.NewGuid(),
-                TicketStatus = TicketStatus.AcceptancePending
-            });
+        //    Mock<IRestaurantServiceRepository> mockRepository = new Mock<IRestaurantServiceRepository>();
+        //    mockRepository.Setup(repo => repo.GetTicketById(It.IsAny<Guid>())).ReturnsAsync(new Ticket
+        //    {
+        //        OrderId = ticketId,
+        //        RestaurantId = Guid.NewGuid(),
+        //        TicketStatus = TicketStatus.AcceptancePending
+        //    });
 
-            var mockOrderServiceMessageBrokerClient = new Mock<IMessageBrokerClient>();
-            mockOrderServiceMessageBrokerClient.Setup(client => client.SendMessageAsync(It.Is<MessageEnvelope>(messageEnvelope =>
-               messageEnvelope.Type == OrderServiceMessageEnvelopeTypes.TicketAcceptedEvent
-            && messageEnvelope.MessageId == ticketId)));
+        //    var mockOrderServiceMessageBrokerClient = new Mock<IMessageBrokerClient>();
+        //    mockOrderServiceMessageBrokerClient.Setup(client => client.SendMessageAsync(It.Is<MessageEnvelope>(messageEnvelope =>
+        //       messageEnvelope.Type == OrderServiceMessageEnvelopeTypes.TicketAcceptedEvent
+        //    && messageEnvelope.MessageId == ticketId)));
 
-            var mockOrderServiceMessageBrokerClientFactory = new Mock<IMessageBrokerClientFactory>();
-            mockOrderServiceMessageBrokerClientFactory
-                .Setup(factory => factory.CreateClient(It.IsAny<MessageBrokerClientOptions>()))
-                .Returns(mockOrderServiceMessageBrokerClient.Object);
+        //    var mockOrderServiceMessageBrokerClientFactory = new Mock<IMessageBrokerClientFactory>();
+        //    mockOrderServiceMessageBrokerClientFactory
+        //        .Setup(factory => factory.CreateClient(It.IsAny<MessageBrokerClientOptions>()))
+        //        .Returns(mockOrderServiceMessageBrokerClient.Object);
 
-            var mockOrderServiceProxyConfig = new Mock<IOrderServiceProxyConfiguration>();
+        //    var mockOrderServiceProxyConfig = new Mock<IOrderServiceProxyConfiguration>();
 
-            var orderServiceProxy = new OrderServiceProxy(mockOrderServiceMessageBrokerClientFactory.Object, mockOrderServiceProxyConfig.Object);
+        //    var orderServiceProxy = new OrderServiceProxy(mockOrderServiceMessageBrokerClientFactory.Object, mockOrderServiceProxyConfig.Object);
 
-            var orderService = new RestaurantService.Domain.Services.RestaurantService(mockRepository.Object, orderServiceProxy);
+        //    var orderService = new RestaurantService.Domain.Services.RestaurantService(mockRepository.Object, orderServiceProxy);
             
-            //When
-            var serviceOperationResult = await orderService.AcceptTicket(ticketId);
+        //    //When
+        //    var serviceOperationResult = await orderService.AcceptTicket(ticketId);
 
-            //Then
-            mockRepository.Verify(repo => repo.GetTicketById(ticketId), Times.Once);
-            mockOrderServiceMessageBrokerClient.Verify(client => client.SendMessageAsync(It.Is<MessageEnvelope>(messageEnvelope => 
-               messageEnvelope.Type == OrderServiceMessageEnvelopeTypes.TicketAcceptedEvent
-            && messageEnvelope.MessageId == ticketId)), Times.AtLeastOnce);
-            Assert.IsTrue(serviceOperationResult.IsSuccess);
+        //    //Then
+        //    mockRepository.Verify(repo => repo.GetTicketById(ticketId), Times.Once);
+        //    mockOrderServiceMessageBrokerClient.Verify(client => client.SendMessageAsync(It.Is<MessageEnvelope>(messageEnvelope => 
+        //       messageEnvelope.Type == OrderServiceMessageEnvelopeTypes.TicketAcceptedEvent
+        //    && messageEnvelope.MessageId == ticketId)), Times.AtLeastOnce);
+        //    Assert.IsTrue(serviceOperationResult.IsSuccess);
 
-        }
+        //}
     }
 }

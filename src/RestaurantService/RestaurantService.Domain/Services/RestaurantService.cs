@@ -8,10 +8,10 @@ namespace RestaurantService.Domain.Services
     public class RestaurantService
     {
         private readonly IRestaurantServiceRepository _restaurantServiceRepository;
-        private readonly OrderServiceProxy _orderServiceProxy;
+        private readonly IOrderServiceProxy _orderServiceProxy;
 
         public RestaurantService(IRestaurantServiceRepository restaurantServiceRepository,
-            OrderServiceProxy orderServiceProxy)
+            IOrderServiceProxy orderServiceProxy)
         {
             _restaurantServiceRepository = restaurantServiceRepository;
             _orderServiceProxy = orderServiceProxy;
