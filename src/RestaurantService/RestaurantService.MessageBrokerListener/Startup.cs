@@ -9,9 +9,9 @@ using FoodDeliveryService.Messaging.RabbitMQ;
 using RestaurantService.MessageBrokerListener.Configuration;
 using RestaurantService.Domain.Repositories;
 using RestaurantService.DataAccess;
-using RestaurantService.MessageBrokerListener.MessageHandling;
 using OrderService.Proxy;
 using OrderService.Proxy.ProxyImplementations;
+using RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace RestaurantService.MessageBrokerListener

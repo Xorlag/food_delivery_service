@@ -8,14 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\DataAccess\FoodDeliveryService.DataAccess.Sql\FoodDeliveryService.DataAccess.Sql.csproj" />
     <ProjectReference Include="..\Core\DataAccess\FoodDeliveryService.DataAccess\FoodDeliveryService.DataAccess.csproj" />
     <ProjectReference Include="..\Core\Messaging\FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj" />
-    <ProjectReference Include="..\FoodDeliveryService.DataAccess.MessageOutbox\FoodDeliveryService.DataAccess.MessageOutbox.csproj" />
   </ItemGroup>
 
 </Project>

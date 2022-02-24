@@ -3,7 +3,7 @@ using RestaurantService.Domain.Entities;
 using RestaurantService.DTO.Messages;
 using System.Linq;
 
-namespace RestaurantService.MessageBrokerListener.MessageHandling.Mappers
+namespace RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling.Mappers
 {
     public class CreateTicketCommandToDetailsMapper : IMapper<CreateTicketCommand, TicketDetails>
     {

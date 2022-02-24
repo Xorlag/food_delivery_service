@@ -67,6 +67,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantService.Domain.Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryService.Messaging.MessageOutboxClient", "FoodDeliveryService.Messaging.MessageOutboxDecorator\FoodDeliveryService.Messaging.MessageOutboxClient.csproj", "{54CD7F88-C2A0-4EC7-BD4D-E04EEC1335D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDeliveryService.DataAccess.MessageOutbox", "FoodDeliveryService.DataAccess.MessageOutbox\FoodDeliveryService.DataAccess.MessageOutbox.csproj", "{11717A4E-4D10-460D-853F-220F2519D013}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{54CD7F88-C2A0-4EC7-BD4D-E04EEC1335D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54CD7F88-C2A0-4EC7-BD4D-E04EEC1335D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54CD7F88-C2A0-4EC7-BD4D-E04EEC1335D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11717A4E-4D10-460D-853F-220F2519D013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11717A4E-4D10-460D-853F-220F2519D013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11717A4E-4D10-460D-853F-220F2519D013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11717A4E-4D10-460D-853F-220F2519D013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,6 +199,7 @@ Global
 		{381BBE52-3509-46B1-AFDB-210E23370C97} = {89609963-9255-4240-9747-BA7B1DA0AF1A}
 		{BD944F9A-8C03-42DB-BBF4-7225D15E3E00} = {2FA71DA6-34C0-4519-8970-8892F908F8F1}
 		{54CD7F88-C2A0-4EC7-BD4D-E04EEC1335D8} = {05E818F8-FBCC-4CD8-A157-775AE4B64984}
+		{11717A4E-4D10-460D-853F-220F2519D013} = {6A28D346-952F-4E11-BB98-98FA1A444A49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {218CC091-D180-467F-8CA6-72B654287E49}

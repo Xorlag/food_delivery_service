@@ -1,4 +1,4 @@
-﻿using FoodDeliveryService.Messaging.MessageOutboxClient;
+﻿using FoodDeliveryService.DataAccess.MessageOutbox;
 
 namespace FoodDeliveryService.Messaging.MessageOutboxDecorator
 {

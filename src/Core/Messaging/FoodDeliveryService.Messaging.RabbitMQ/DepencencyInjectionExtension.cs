@@ -15,5 +15,6 @@ namespace FoodDeliveryService.Messaging.RabbitMQ
                 return new RabbitMQClientFactory<TService>(connectionFactory, clientOptions);
             });
         }
+        //public static void UseRabbitMQClientFactory<TService>(this IServiceCollection services, )
     }
 }

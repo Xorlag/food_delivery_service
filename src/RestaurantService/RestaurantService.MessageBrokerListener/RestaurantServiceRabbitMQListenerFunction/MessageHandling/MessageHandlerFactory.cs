@@ -2,16 +2,16 @@
 using FoodDeliveryService.MessageHandling.Exceptions;
 using Microsoft.Extensions.Logging;
 using RestaurantService.DTO.Messages;
-using RestaurantService.MessageBrokerListener.MessageHandling.MessageHandlers;
+using RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling.MessageHandlers;
 
-namespace RestaurantService.MessageBrokerListener.MessageHandling
+namespace RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling
 {
     public class MessageHandlerFactory
     {
         private readonly Domain.Services.RestaurantService _restaurantService;
         private readonly ILogger _logger;
 
-        public MessageHandlerFactory(RestaurantService.Domain.Services.RestaurantService restaurantService,
+        public MessageHandlerFactory(Domain.Services.RestaurantService restaurantService,
             ILogger logger)
         {
             _restaurantService = restaurantService;

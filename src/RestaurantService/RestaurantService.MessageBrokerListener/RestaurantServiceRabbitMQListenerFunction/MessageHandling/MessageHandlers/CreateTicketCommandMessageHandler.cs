@@ -3,16 +3,16 @@ using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.Messaging;
 using Microsoft.Extensions.Logging;
 using RestaurantService.DTO.Messages;
-using RestaurantService.MessageBrokerListener.MessageHandling.Mappers;
+using RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling.Mappers;
 
-namespace RestaurantService.MessageBrokerListener.MessageHandling.MessageHandlers
+namespace RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling.MessageHandlers
 {
     internal class CreateTicketCommandMessageHandler : IMessageHandler
     {
         private readonly Domain.Services.RestaurantService _restaurantService;
         private readonly ILogger _logger;
 
-        public CreateTicketCommandMessageHandler(RestaurantService.Domain.Services.RestaurantService restaurantService, ILogger logger)
+        public CreateTicketCommandMessageHandler(Domain.Services.RestaurantService restaurantService, ILogger logger)
         {
             _restaurantService = restaurantService;
             _logger = logger;

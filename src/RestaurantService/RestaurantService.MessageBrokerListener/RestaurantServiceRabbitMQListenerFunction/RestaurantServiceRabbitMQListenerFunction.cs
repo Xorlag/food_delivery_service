@@ -2,19 +2,19 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using FoodDeliveryService.Messaging;
-using RestaurantService.MessageBrokerListener.MessageHandling;
+using RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling;
 
-namespace RestaurantService.MessageBrokerListener
+namespace RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction
 {
     public class RestaurantServiceRabbitMQListenerFunction
     {
         private const string RABBIT_MQ_CONNECTION_STRING_SETTING = "RabbitMq__RestaurantService_ConnectionString";
         private const string RABBIT_MQ_QUEUE_NAME = "RestaurantServiceQueue";
 
-        private readonly RestaurantService.Domain.Services.RestaurantService _restaurantService;
+        private readonly Domain.Services.RestaurantService _restaurantService;
         private readonly MessageHandlerFactory _messageHandlerFactory;
 
-        public RestaurantServiceRabbitMQListenerFunction(RestaurantService.Domain.Services.RestaurantService restaurantService,
+        public RestaurantServiceRabbitMQListenerFunction(Domain.Services.RestaurantService restaurantService,
             MessageHandlerFactory messageHandlerFactory)
         {
             _restaurantService = restaurantService;

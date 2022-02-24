@@ -1,6 +1,6 @@
-﻿namespace FoodDeliveryService.Messaging.MessageOutboxClient.Entities
+﻿namespace FoodDeliveryService.DataAccess.MessageOutbox.Entities
 {
-    public class MessageOutbox
+    public class MessageOutboxRecord
     {
         public Guid MessageId { get; set; }
         public byte[] MessagePayload { get; set; }

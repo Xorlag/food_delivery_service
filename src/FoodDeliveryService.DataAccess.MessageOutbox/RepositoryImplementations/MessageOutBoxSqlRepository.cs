@@ -1,13 +1,13 @@
-﻿using Dapper;
-using FoodDeliveryService.DataAccess.DataOperation;
-using FoodDeliveryService.DataAccess.Sql.DbConnection;
-using FoodDeliveryService.Messaging.MessageOutboxClient;
-using FoodDeliveryService.Messaging.MessageOutboxClient.Entities;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Text;
 using System.Text.Json;
+using Dapper;
+using FoodDeliveryService.DataAccess.DataOperation;
+using FoodDeliveryService.DataAccess.MessageOutbox.Entities;
+using FoodDeliveryService.DataAccess.Sql.DbConnection;
+using FoodDeliveryService.Messaging;
 
-namespace FoodDeliveryService.Messaging.MessageOutboxDecorator.Repositories
+namespace FoodDeliveryService.DataAccess.MessageOutbox.RepositoryImplementations
 {
     internal class MessageOutBoxSqlRepository : IMessageOutboxRepository
     {
@@ -25,7 +25,7 @@ namespace FoodDeliveryService.Messaging.MessageOutboxDecorator.Repositories
                                          FROM OutboxMessages
                                          WHERE Status = @status";
 
-            var unsentOutboxMessages = await sqlConnection.QueryAsync<MessageOutbox>(getUnsentMessagesSql, new
+            var unsentOutboxMessages = await sqlConnection.QueryAsync<MessageOutboxRecord>(getUnsentMessagesSql, new
             {
                 Status = MessageOutboxStatus.ReadyToSend
             });
@@ -44,7 +44,7 @@ namespace FoodDeliveryService.Messaging.MessageOutboxDecorator.Repositories
                 int affectedRowsCount = await sqlConnection.ExecuteAsync(updateMessageSql, new
                 {
                     status = MessageOutboxStatus.Sent,
-                    messageId = messageId
+                    messageId
                 });
                 if (affectedRowsCount > 0)
                 {
@@ -93,7 +93,7 @@ namespace FoodDeliveryService.Messaging.MessageOutboxDecorator.Repositories
             }
         }
 
-        private MessageEnvelope MapToMessageEnvelope(MessageOutbox messageOutbox)
+        private MessageEnvelope MapToMessageEnvelope(MessageOutboxRecord messageOutbox)
         {
             var serializedEnvelopeBytes = Encoding.UTF8.GetString(messageOutbox.MessagePayload);
             var messageEnvelope = JsonSerializer.Deserialize<MessageEnvelope>(serializedEnvelopeBytes);

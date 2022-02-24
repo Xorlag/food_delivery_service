@@ -1,4 +1,4 @@
-﻿namespace FoodDeliveryService.Messaging.MessageOutboxClient.Entities
+﻿namespace FoodDeliveryService.DataAccess.MessageOutbox.Entities
 {
     public enum MessageOutboxStatus
     {
