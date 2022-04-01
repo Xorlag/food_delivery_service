@@ -1,9 +1,10 @@
 ﻿using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.MessageHandling.Exceptions;
 using OrderService.DTO.Messages;
+using OrderService.FunctionsApp.MessageHandling.MessageHandlers;
 using OrderService.MessageBrokerListener.MessageHandling.MessageHandlers;
 
-namespace OrderService.MessageBrokerListener.MessageHandling
+namespace OrderService.FunctionsApp.MessageHandling
 {
     public class MessageHandlerFactory
     {

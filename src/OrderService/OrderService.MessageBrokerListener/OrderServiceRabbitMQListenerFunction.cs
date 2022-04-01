@@ -2,19 +2,19 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using FoodDeliveryService.Messaging;
-using OrderService.MessageBrokerListener.MessageHandling;
+using OrderService.FunctionsApp.MessageHandling;
 
-namespace OrderService.MessageBrokerListener
+namespace OrderService.FunctionsApp
 {
     public class OrderServiceRabbitMQListenerFunction
     {
         private const string RABBIT_MQ_CONNECTION_STRING_SETTING = "RabbitMq__OrderService_ConnectionString";
         private const string RABBIT_MQ_QUEUE_NAME = "OrderServiceQueue";
 
-        private readonly OrderService.Domain.Services.OrderService _orderService;
+        private readonly Domain.Services.OrderService _orderService;
         private readonly MessageHandlerFactory _messageHandlerFactory;
 
-        public OrderServiceRabbitMQListenerFunction(OrderService.Domain.Services.OrderService orderService,
+        public OrderServiceRabbitMQListenerFunction(Domain.Services.OrderService orderService,
             MessageHandlerFactory messageHandlerFactory)
         {
             _orderService = orderService;

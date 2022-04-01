@@ -3,13 +3,13 @@ using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.Messaging;
 using OrderService.DTO.Messages;
 
-namespace OrderService.MessageBrokerListener.MessageHandling.MessageHandlers
+namespace OrderService.FunctionsApp.MessageHandling.MessageHandlers
 {
     internal class TicketAcceptedEventMessageHandler : IMessageHandler
     {
         private readonly Domain.Services.OrderService _orderService;
 
-        public TicketAcceptedEventMessageHandler(OrderService.Domain.Services.OrderService orderService)
+        public TicketAcceptedEventMessageHandler(Domain.Services.OrderService orderService)
         {
             _orderService = orderService;
         }

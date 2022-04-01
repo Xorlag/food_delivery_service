@@ -12,6 +12,7 @@
     <ProjectReference Include="..\..\Core\DataAccess\FoodDeliveryService.DataAccess.Sql\FoodDeliveryService.DataAccess.Sql.csproj" />
     <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.Mappers\FoodDeliveryService.Mappers.csproj" />
     <ProjectReference Include="..\..\Core\Helpers\FoodDeliveryService.MessageHandling\FoodDeliveryService.MessageHandling.csproj" />
+    <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.MessageOutboxDecorator\FoodDeliveryService.Messaging.MessageOutboxClient.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj" />
     <ProjectReference Include="..\..\FoodDeliveryService.Messaging.MessageOutboxDecorator\FoodDeliveryService.Messaging.MessageOutboxClient.csproj" />

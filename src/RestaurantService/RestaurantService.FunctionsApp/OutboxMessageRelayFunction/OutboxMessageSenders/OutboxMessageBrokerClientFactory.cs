@@ -1,4 +1,4 @@
-﻿namespace RestaurantService.MessageBrokerListener.OutboxMessageSenders
+﻿namespace RestaurantService.FunctionsApp.OutboxMessageRelayFunction.OutboxMessageSenders
 {
     public class OutboxMessageBrokerClientFactory
     {

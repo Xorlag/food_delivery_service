@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using FoodDeliveryService.DataAccess.MessageOutbox;
 using FoodDeliveryService.Messaging;
 
-namespace RestaurantService.MessageBrokerListener.OutboxMessageRelayFunction
+namespace RestaurantService.FunctionsApp.OutboxMessageRelayFunction
 {
     public class OutboxMessageRelayFunction
     {

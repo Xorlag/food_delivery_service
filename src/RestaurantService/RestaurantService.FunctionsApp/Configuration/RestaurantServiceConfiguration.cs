@@ -1,4 +1,6 @@
-﻿namespace RestaurantService.MessageBrokerListener.Configuration
+﻿using RestaurantService.FunctionsApp.Configuration;
+
+namespace RestaurantService.MessageBrokerListener.Configuration
 {
     internal class RestaurantServiceConfiguration
     {

@@ -1,4 +1,4 @@
-﻿namespace RestaurantService.MessageBrokerListener.Configuration
+﻿namespace RestaurantService.FunctionsApp.Configuration
 {
     internal class OrderServiceProxyConfiguration
     {

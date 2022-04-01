@@ -4,7 +4,7 @@ using OrderService.Domain.Models.Entities;
 using OrderService.DTO.Messages;
 using System.Linq;
 
-namespace OrderService.MessageBrokerListener.Mappers
+namespace OrderService.FunctionsApp.Mappers
 {
     public class CreateOrderRequestToCommandMapper : IMapper<CreateOrderCommand, OrderDetails>
     {

@@ -2,7 +2,7 @@
 using FoodDeliveryService.MessageHandling;
 using FoodDeliveryService.Messaging;
 using OrderService.DTO.Messages;
-using OrderService.MessageBrokerListener.Mappers;
+using OrderService.FunctionsApp.Mappers;
 
 namespace OrderService.MessageBrokerListener.MessageHandling.MessageHandlers
 {

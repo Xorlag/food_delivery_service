@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using FoodDeliveryService.Messaging;
 using FoodDeliveryService.DataAccess.Sql.DependencyInjection;
 using Microsoft.Extensions.Options;
-using RestaurantService.MessageBrokerListener;
 using FoodDeliveryService.Messaging.RabbitMQ;
 using RestaurantService.MessageBrokerListener.Configuration;
 using RestaurantService.Domain.Repositories;
@@ -12,9 +11,10 @@ using RestaurantService.DataAccess;
 using OrderService.Proxy;
 using OrderService.Proxy.ProxyImplementations;
 using RestaurantService.MessageBrokerListener.RestaurantServiceRabbitMQListenerFunction.MessageHandling;
+using RestaurantService.FunctionsApp;
 
 [assembly: FunctionsStartup(typeof(Startup))]
-namespace RestaurantService.MessageBrokerListener
+namespace RestaurantService.FunctionsApp
 {
     public class Startup : FunctionsStartup
     {
@@ -35,7 +35,7 @@ namespace RestaurantService.MessageBrokerListener
 
         private void ConfigureDependencyInjection(IServiceCollection services)
         {
-            services.AddSingleton<RestaurantService.Domain.Services.RestaurantService>();
+            services.AddSingleton<Domain.Services.RestaurantService>();
             services.AddSingleton<IOrderServiceProxy, OrderServiceProxyAsync>();
             services.AddSingleton<IRestaurantServiceRepository, RestaurantServiceRepository>();
             services.AddSingleton<MessageHandlerFactory>();

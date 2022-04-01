@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.MessageBrokerListener.Configuration
+﻿namespace OrderService.FunctionsApp.Configuration
 {
     internal class OrderServiceConfiguration
     {
