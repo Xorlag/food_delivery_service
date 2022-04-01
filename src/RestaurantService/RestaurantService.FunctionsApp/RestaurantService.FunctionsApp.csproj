@@ -15,7 +15,6 @@
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.MessageOutboxDecorator\FoodDeliveryService.Messaging.MessageOutboxClient.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging.RabbitMQ\FoodDeliveryService.Messaging.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\Core\Messaging\FoodDeliveryService.Messaging\FoodDeliveryService.Messaging.csproj" />
-    <ProjectReference Include="..\..\FoodDeliveryService.Messaging.MessageOutboxDecorator\FoodDeliveryService.Messaging.MessageOutboxClient.csproj" />
     <ProjectReference Include="..\RestaurantService.DataAccess\RestaurantService.DataAccess.csproj" />
     <ProjectReference Include="..\RestaurantService.Domain\RestaurantService.Domain.csproj" />
     <ProjectReference Include="..\RestaurantService.DTO\RestaurantService.DTO.csproj" />
